@@ -6,6 +6,7 @@ import { faGear } from '@fortawesome/free-solid-svg-icons';
 function Header() {
     const handleToSetting = () => {
         console.log(handleToSetting);
+        fetch('http://localhost:3001/')
     }
 
 
