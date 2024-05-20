@@ -1,14 +1,9 @@
-import React from 'react';
 import AddWallet from '../components/AddWallet';
-import Menubar  from '../components/menubar';
+
 
 function AddWalletPage() {
-  return (
-    <>
-      <Menubar />
-      <AddWallet />
-    </>
-  );
+  return <AddWallet />;
+  
 }
 
 export default AddWalletPage;

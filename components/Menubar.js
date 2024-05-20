@@ -1,22 +1,15 @@
 import styles from '../styles/AddWallet.module.css';
 
+
 function Menubar() {
   return (
     <div className={styles.main}>
-      <Menubar>
-        <MenubarMenu>
-          <MenubarTrigger>Dashboard</MenubarTrigger>
-        </MenubarMenu>
-        <MenubarMenu>
-          <MenubarTrigger>Reporting</MenubarTrigger>
-        </MenubarMenu>
-        <MenubarMenu>
-          <MenubarTrigger>New</MenubarTrigger>
-        </MenubarMenu>
-        <MenubarMenu>
-          <MenubarTrigger>Wallet</MenubarTrigger>
-        </MenubarMenu>
-      </Menubar>
+      <div className={styles.menu}>
+        <div className={styles.menuItem} onClick={() => {}}>Dashboard</div>
+        <div className={styles.menuItem} onClick={() => {}}>Reporting</div>
+        <div className={styles.menuItem} onClick={() => {}}>News</div>
+        <div className={styles.menuItem} onClick={() => {}}>Wallet</div>
+      </div>
       <div className={styles.content}>
         <h1 className={styles.title}>Add Wallet</h1>
         <p><a href="http://localhost:3001/">Login</a></p>
@@ -27,4 +20,4 @@ function Menubar() {
   );
 }
 
-export { Menubar, MenubarMenu, MenubarTrigger }; // Exportez les composants individuels
+export default Menubar;
