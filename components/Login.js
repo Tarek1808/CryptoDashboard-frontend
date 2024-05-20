@@ -2,18 +2,43 @@ import styles from '../styles/Login.module.css';
 import { Modal } from 'antd';
 import SignUp from './SignUp.js';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { login } from '../reducers/user';
 
 function Login() {
 
-  const [signUpModalVisible, setSignUpModalVisible] = useState(false);
+    const dispatch = useDispatch();
 
-  const showSignUpModal = () => {
-    setSignUpModalVisible(true);
-  };
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
 
-  const handleCancelSignUp = () => {
-    setSignUpModalVisible(false);
-  };
+    const [signUpModalVisible, setSignUpModalVisible] = useState(false);
+
+    const showSignUpModal = () => {
+        setSignUpModalVisible(true);
+    };
+
+    const handleCancelSignUp = () => {
+        setSignUpModalVisible(false);
+    };
+
+    const handleSignIn = () => {
+        fetch('http://localhost:3000/users/signin', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, password }),
+        }).then(response => response.json())
+            .then(data => {
+                if (data.result) {
+                    console.log("utilisateur connecté via sign in:", data.username)
+                    data.result && dispatch(login({ token: data.token, username: data.username }));
+                    setPassword('')
+                    setUsername('')
+                } else {
+                    console.log("erreur sign in")
+                }
+            });
+    }
 
     return (
         <div className={styles.container}>
@@ -46,8 +71,9 @@ function Login() {
 
                     </div>
                     <div className={styles.auth}>
-
-                        <button onClick={() => console.log("Sign In")}>Sign In</button>
+                        <input type="text" className={styles.input} onChange={(e) => setUsername(e.target.value)} value={username} placeholder="Username" />
+                        <input type="password" className={styles.input} onChange={(e) => setPassword(e.target.value)} value={password} placeholder="Password" />
+                        <button onClick={() => handleSignIn()}>Sign In</button>
                         <button onClick={() => showSignUpModal()}>Sign Up</button>
                     </div>
                 </div>

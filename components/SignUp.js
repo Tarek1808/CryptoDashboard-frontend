@@ -1,17 +1,14 @@
 import { useState } from 'react';
 import styles from '../styles/SignUp.module.css';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { login } from '../reducers/user';
 
 function SignUp() {
     const dispatch = useDispatch()
-    const user = useSelector((state) => state.user.value)
 
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
-    if(user.token) console.log("utilisateur connecté:",user.username)
 
     const handleSubmit = () => {
         fetch('http://localhost:3000/users/signup', {
@@ -22,6 +19,9 @@ function SignUp() {
             .then(data => {
                 console.log("fetch signup :", data)
                 data.result && dispatch(login({ token: data.token, username, email }));
+                setEmail('')
+                setPassword('')
+                setUsername('')
             });
     };
 
