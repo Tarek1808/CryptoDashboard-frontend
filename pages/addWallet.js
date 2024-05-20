@@ -1,7 +1,13 @@
 import AddWallet from '../components/AddWallet';
 
+
+
+
 function AddWalletPage() {
-  return <AddWallet />;
+  return (<div>
+    <AddWallet />
+    </div>);
+  
 }
 
 export default AddWalletPage;
