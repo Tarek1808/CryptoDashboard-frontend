@@ -16,7 +16,7 @@
   Font-style: extra-bold;
   text-align: left; 
   width: 100%;
-  background-color: #f0f0f0; 
+  background-color: #ffffff; 
   padding: 50px 50px; 
   margin-bottom: 20px;
   border-bottom: 3px solid #000000; 
@@ -40,3 +40,7 @@
     padding: 4rem 0;
   }
   
+  .content {
+    display: flex;
+    width: 100%;
+}
