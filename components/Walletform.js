@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from '../styles/AddWallet.module.css';
+import styles from '../styles/WalletForm.module.css';
 
 function WalletForm() {
     const [selectedCrypto, setSelectedCrypto] = useState('');
