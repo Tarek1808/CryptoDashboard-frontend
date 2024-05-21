@@ -4,6 +4,7 @@
     justify-content: flex-start;
     align-items: center;
     min-height: 100vh;
+    margin-top: -410px;
     padding: 20px;
   }
   
@@ -16,7 +17,7 @@
     border-radius: 20px;
     padding:2rem;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-    margin-top: -19rem; /* Ajouter une marge négative en haut */
+    margin-top: -19rem; 
   }
   
   .menuItem {
