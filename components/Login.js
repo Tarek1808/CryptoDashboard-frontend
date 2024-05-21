@@ -71,10 +71,17 @@ function Login() {
 
                     </div>
                     <div className={styles.auth}>
-                        <input type="text" className={styles.input} onChange={(e) => setUsername(e.target.value)} value={username} placeholder="Username" />
-                        <input type="password" className={styles.input} onChange={(e) => setPassword(e.target.value)} value={password} placeholder="Password" />
-                        <button onClick={() => handleSignIn()}>Sign In</button>
-                        <button onClick={() => showSignUpModal()}>Sign Up</button>
+                        <div className={styles.inputContainer}>
+                            <label className={styles.labelCaption}>Username</label>
+                            <input type="text" className={styles.input} onChange={(e) => setUsername(e.target.value)} value={username} placeholder="Username" />
+                        </div>
+                        <div className={styles.inputContainer}>
+                            <label className={styles.labelCaption}>Password</label>
+                            <input type="password" className={styles.input} onChange={(e) => setPassword(e.target.value)} value={password} placeholder="Password" />
+                        </div>
+                        <button className={styles.button} onClick={() => handleSignIn()}>Sign In</button>
+                        <hr className={styles.separator} />
+                        <button className={styles.button} onClick={() => showSignUpModal()}>Sign Up</button>
                     </div>
                 </div>
 

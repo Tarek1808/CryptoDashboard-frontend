@@ -22,15 +22,14 @@
   .menuItem {
     padding: 1rem 2rem;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-bottom: -0,5rem;
-    font-family: "inter", sans-serif ;
+    transition: background-color 0s ease, border-radius 0s ease; 
+    margin-bottom: -0.5rem; 
+    font-family: "Inter", sans-serif;
   }
   
   .menuItem:hover {
     background-color: #EC7126;
-    border-radius: 10px;
-  
+    border-radius: 10px; 
   }
   
   .content {
