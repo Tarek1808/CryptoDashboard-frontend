@@ -1,6 +1,5 @@
 import styles from '../styles/Menubar.module.css';
 
-
 function MenuBar() {
   return (
     <div className={styles.main}>
