@@ -6,7 +6,7 @@
     border: 3px solid #EC7126;
     border-radius: 8px;
     margin: auto;
-    text-align: center; /* Pour centrer le contenu horizontalement */
+    text-align: center; 
 }
 
 
@@ -56,8 +56,8 @@
 
 .button {
     height: 36px;
-    width: 100%; /* Ajustement de la largeur */
-    max-width: 90px; /* Ajustement de la largeur maximale */
+    width: 100%; 
+    max-width: 90px; 
     background-color: #EC7126;
     color: #FFFFFF;
     border: none;
@@ -69,11 +69,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto; /* Centrage du bouton */
+    margin: 0 auto; 
 }
 
 .input:focus {
-    border-color: #EC7126; /* Couleur de la bordure lorsqu'il est sélectionné */
-    outline: none; /* Supprime la bordure d'accentuation par défaut */
-    box-shadow: 0 0 0 2px #EC7126; /* Ajoute une bordure d'accentuation personnalisée */
+    border-color: #EC7126; 
+    outline: none; 
+    box-shadow: 0 0 0 2px #EC7126; 
 }
