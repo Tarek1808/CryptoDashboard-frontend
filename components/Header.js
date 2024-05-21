@@ -16,7 +16,7 @@ function Header() {
             <div className={styles.droite}>
                <span><FontAwesomeIcon
                     icon={faGear}
-                    spin
+                
                     size='xl'
                     className='gear'
                     onClick={() => handleToSetting()}
