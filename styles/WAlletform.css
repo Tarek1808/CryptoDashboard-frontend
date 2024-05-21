@@ -1,0 +1,37 @@
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Aligne le formulaire à droite */
+    justify-content: space-between; /* Espace entre les éléments */
+    min-height: 300px; /* Hauteur minimale pour voir tous les éléments */
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .addressContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px; /* Spacing entre le champ d'adresse et le bouton "+" */
+  }
+  
+  .addButton {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .submitBtn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: auto; /* Empêche le bouton de se coller au haut du formulaire */
+  }
+  
