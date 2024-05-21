@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from '../styles/AddWallet.module.css';
-import Menubar from './Menubar';
-import WalletForm from './WalletForm';
+import MenuBar from './MenuBar';
+import WalletForm from './Walletform';
 import Header from './Header';
 
 
@@ -14,7 +14,7 @@ function AddWallet() {
             </div>
             <div className={styles.content}>
                 <div className={styles.menubar}>
-                    <Menubar />
+                    <MenuBar />
                 </div>
                 <div className={styles.rightContent}>
                     <h1 className={styles.title}>
