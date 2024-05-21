@@ -2,36 +2,36 @@ import styles from '../styles/Header.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGear } from '@fortawesome/free-solid-svg-icons';
 import { Popover, Switch } from 'antd';
-import SwitchButton from './SwitchButton';
+import React from 'react';
 
 
 function Header() {
-   
-    const popoverContent = (
-        
-        <div className={styles.gear}>
-            <h3>Settings</h3>
-            <p>Account Info</p>
-            <span>
-                {SwitchButton}
-                <p>DarkMode</p>
-                </span>
-            {/* <span><Switch 
-            checked={field.value}
-            onCheckedChange={field.onChange}/>
-            <p>Dark Mode</p></span>
-            <span><p>€</p>
-            <Switch
-            checked={field.value}
-            onCheckedChange={field.onChange}
-            disabled
-            arial-readonly/>
-            <p>$</p></span> */}
-        </div>
-    );
-        
 
-    
+    const popoverContent = (
+
+        <div>
+            <h3 className={styles.setting}>Settings</h3>
+            <div className={styles.gear}>
+
+                <p>Account Info</p>
+                <span>Dark Mode     <Switch
+                    defaultChecked
+                    style={{ backgroundColor: '#EC7126' }}
+                // onChange={onChange}
+                />
+                </span><br />
+                <span>€
+                    <Switch
+                        defaultChecked
+                        // onChange={onChange}
+                        style={{ backgroundColor: '#EC7126' }}
+                        arial-readonly />  $
+                </span>
+            </div></div>
+    );
+
+
+
 
 
     return (
@@ -39,14 +39,14 @@ function Header() {
             <h2 className={styles.textHeader}>Dashboard crypto</h2>
             <div className={styles.droite}>
                 <span><Popover
-                    className={styles.gear}
+
                     content={popoverContent}
-                    
+
                     trigger='click'>
                     <FontAwesomeIcon
                         icon={faGear}
-                        spin
-                        size='xl' />               
+                        // spin
+                        size='xl' />
                 </Popover></span>
                 <button className={styles.button}>Logout</button>
             </div>
