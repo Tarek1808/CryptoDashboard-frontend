@@ -2,9 +2,11 @@ import { useState } from 'react';
 import styles from '../styles/SignUp.module.css';
 import { useDispatch } from 'react-redux';
 import { login } from '../reducers/user';
+import { useRouter } from 'next/router';
 
 function SignUp() {
     const dispatch = useDispatch()
+    const router = useRouter();
 
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
@@ -17,11 +19,16 @@ function SignUp() {
             body: JSON.stringify({ email, username, password }),
         }).then(response => response.json())
             .then(data => {
-                console.log("fetch signup :", data)
-                data.result && dispatch(login({ token: data.token, username, email }));
-                setEmail('')
-                setPassword('')
-                setUsername('')
+                if (data.result) {
+                    console.log("fetch signup :", data)
+                    data.result && dispatch(login({ token: data.token, username, email }));
+                    setEmail('')
+                    setPassword('')
+                    setUsername('')
+                    router.push('/addWallet')
+                } else {
+                    console.log("erreur sign up")
+                }
             });
     };
 

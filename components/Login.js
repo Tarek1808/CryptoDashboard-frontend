@@ -4,10 +4,12 @@ import SignUp from './SignUp.js';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { login } from '../reducers/user';
+import { useRouter } from 'next/router';
 
 function Login() {
 
     const dispatch = useDispatch();
+    const router = useRouter();
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -23,21 +25,24 @@ function Login() {
     };
 
     const handleSignIn = () => {
-        fetch('http://localhost:3000/users/signin', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ username, password }),
-        }).then(response => response.json())
-            .then(data => {
-                if (data.result) {
-                    console.log("utilisateur connecté via sign in:", data.username)
-                    data.result && dispatch(login({ token: data.token, username: data.username }));
-                    setPassword('')
-                    setUsername('')
-                } else {
-                    console.log("erreur sign in")
-                }
-            });
+        if (username !== '' && password !== '') {
+            fetch('http://localhost:3000/users/signin', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, password }),
+            }).then(response => response.json())
+                .then(data => {
+                    if (data.result) {
+                        console.log("utilisateur connecté via sign in:", data.username)
+                        data.result && dispatch(login({ token: data.token, username: data.username }));
+                        setPassword('')
+                        setUsername('')
+                        router.push('/addWallet')
+                    } else {
+                        console.log("erreur sign in")
+                    }
+                });
+        }
     }
 
     return (
@@ -71,10 +76,17 @@ function Login() {
 
                     </div>
                     <div className={styles.auth}>
-                        <input type="text" className={styles.input} onChange={(e) => setUsername(e.target.value)} value={username} placeholder="Username" />
-                        <input type="password" className={styles.input} onChange={(e) => setPassword(e.target.value)} value={password} placeholder="Password" />
-                        <button onClick={() => handleSignIn()}>Sign In</button>
-                        <button onClick={() => showSignUpModal()}>Sign Up</button>
+                        <div className={styles.inputContainer}>
+                            <label className={styles.labelCaption}>Username</label>
+                            <input type="text" className={styles.input} onChange={(e) => setUsername(e.target.value)} value={username} placeholder="Username" />
+                        </div>
+                        <div className={styles.inputContainer}>
+                            <label className={styles.labelCaption}>Password</label>
+                            <input type="password" className={styles.input} onChange={(e) => setPassword(e.target.value)} value={password} placeholder="Password" />
+                        </div>
+                        <button className={styles.button} onClick={() => handleSignIn()}>Sign In</button>
+                        <hr className={styles.separator} />
+                        <button className={styles.button} onClick={() => showSignUpModal()}>Sign Up</button>
                     </div>
                 </div>
 
