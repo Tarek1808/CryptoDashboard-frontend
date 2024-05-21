@@ -52,7 +52,6 @@ function WalletForm() {
                     )}
                 </div>
             ))}
-
             <button type="submit" className={styles.submitBtn}>Soumettre</button>
         </form>
     );
