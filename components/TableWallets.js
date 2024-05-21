@@ -19,6 +19,14 @@ function TableWallets() {
         },
     ]
 
+    const tableData = data.map((item, index) => (
+        <tr key={index}>
+            <td>{item.blockchain}</td>
+            <td>{item.address}</td>
+            <td><button>X</button></td>
+        </tr>
+    ))
+
     return (
         <div>
             <table>
@@ -29,14 +37,8 @@ function TableWallets() {
                         <th>Delete</th>
                     </tr>
                 </thead>
-                <tbody>
-                    {data.map((item, index) => (
-                        <tr key={index}>
-                            <td>{item.blockchain}</td>
-                            <td>{item.address}</td>
-                            <td><button>X</button></td>
-                        </tr>
-                    ))}
+                <tbody className={styles.table}>
+                    {tableData}
                 </tbody>
             </table>
         </div>
