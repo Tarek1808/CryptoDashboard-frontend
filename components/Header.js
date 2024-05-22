@@ -19,8 +19,9 @@ function Header() {
                     style={{ backgroundColor: '#EC7126' }}
                 // onChange={onChange}
                 />
-                </span><br />
-                <span>€
+                </span>
+                <br />
+                <span>  €
                     <Switch
                         defaultChecked
                         // onChange={onChange}
@@ -39,7 +40,7 @@ function Header() {
             <h2 className={styles.textHeader}>Dashboard crypto</h2>
             <div className={styles.droite}>
                 <span><Popover
-
+                    
                     content={popoverContent}
 
                     trigger='click'>

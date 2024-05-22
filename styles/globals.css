@@ -11,3 +11,11 @@ body {
 * {
   box-sizing: border-box;
 }
+
+#light {
+  background-color: white;
+}
+ 
+#dark{
+  background-color: #12045e;
+}
