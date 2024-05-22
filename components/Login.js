@@ -33,8 +33,8 @@ function Login() {
             }).then(response => response.json())
                 .then(data => {
                     if (data.result) {
-                        console.log("utilisateur connecté via sign in:", data.username)
-                        data.result && dispatch(login({ token: data.token, username: data.username }));
+                        console.log("utilisateur connecté via sign in:", data)
+                        data.result && dispatch(login({ data:data.data }));
                         setPassword('')
                         setUsername('')
                         router.push('/addWallet')
