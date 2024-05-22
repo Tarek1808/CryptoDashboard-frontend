@@ -1,58 +1,63 @@
+/* C:\Users\LeeFC\Desktop\Projet C\CryptoDashBoard\cryptoDashboard-frontend\styles\Menubar.module.css */
+
 .main {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    min-height: 100vh;
-    margin-top: 100px;
-    padding: 20px;
-  }
-  
-  .menu {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    width: 200px;
-    background-color: white;
-    border-radius: 20px;
-    padding:2rem;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-    margin-top: -19rem; 
-  }
-  
-  .menuItem {
-    padding: 1rem 2rem;
-    cursor: pointer;
-    transition: background-color 0s ease, border-radius 0s ease; 
-    margin-bottom: -0.5rem; 
-    font-family: "Inter", sans-serif;
-  }
-  
-  .menuItem:hover {
-    background-color: #EC7126;
-    border-radius: 10px; 
-  }
-  
-  .content {
-    text-align: center;
-    margin-left: 2rem;
-    flex-grow: 1;
-  }
-  
-  .title {
-    line-height: 1.15;
-    font-size: 4rem;
-  }
-  
-  .title a {
-    color: #0070f3;
-    text-decoration: none;
-  }
-  
-  .title a:hover, .title a:focus, .title a:active {
-    text-decoration: underline;
-  }
-  
-  
-  
-  
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 100vh;
+  margin-top: 100px;
+  padding: 20px;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 200px;
+  background-color: white;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  margin-top: -19rem;
+}
+
+.menuItem {
+  padding: 1rem 2rem;
+  cursor: pointer;
+  transition: background-color 0s ease, border-radius 0s ease;
+  margin-bottom: -0.5rem;
+  font-family: "Inter", sans-serif;
+}
+
+.menuItem:hover {
+  background-color: #EC7126;
+  border-radius: 10px;
+}
+
+.active {
+  background-color: #e2986b; 
+  border-radius: 10px;
+}
+
+.content {
+  text-align: center;
+  margin-left: 2rem;
+  flex-grow: 1;
+}
+
+.title {
+  line-height: 1.15;
+  font-size: 4rem;
+}
+
+.title a {
+  color: #0070f3;
+  text-decoration: none;
+}
+
+.title a:hover,
+.title a:focus,
+.title a:active {
+  text-decoration: underline;
+}
