@@ -33,6 +33,12 @@ function MenuBar() {
         >
           Wallets
         </div>
+        <div 
+          className={`${styles.menuItem} ${isActive('/addWallet') ? styles.active : ''}`} 
+          onClick={() => router.push('/addWallet')}
+        >
+          Add Wallet
+        </div>
       </div>
     </div>
   );
