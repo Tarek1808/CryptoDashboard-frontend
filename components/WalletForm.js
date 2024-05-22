@@ -8,12 +8,12 @@ function WalletForm() {
     const [newWallet, setNewWallet] = useState([]);
     // const [newAddressIndex, setNewAddressIndex] = useState(0);
     const user = useSelector((state) => state.user.value)
-    console.log("user:", user)
+    // console.log("user:", user.data)
 
     const handleCryptoChange = (event) => {
         setSelectedCrypto(event.target.value);
         if (event.target.value !== '') {
-            setNewWallet([{ address: '', nameWallet: '', user: user.data._id }]);
+            setNewWallet([{ address: '', nameWallet: '', user: user.data.token }]);
         } else {
             setNewWallet([]);
         }
@@ -21,7 +21,7 @@ function WalletForm() {
 
     const handleAddAddressClick = (event) => {
         event.preventDefault();
-        setNewWallet([...newWallet, { address: '', nameWallet: '', user: user.data._id }]);
+        setNewWallet([...newWallet, { address: '', nameWallet: '', user: user.data.token }]);
     };
 
     const handleSubmit = (event) => {
@@ -45,7 +45,6 @@ function WalletForm() {
         })
     };
 
-    console.log("wallets:", newWallet)
 
     return (
         <form className={styles.form}>
