@@ -18,6 +18,13 @@
     align-items: center;
 }
 
+.setting {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+}
+
 .button {
     margin-left: 20px;
     padding: 10px 20px;
@@ -40,6 +47,11 @@
     transition: transform 0.3s ease;
 }
 
-.gear:hover {
-    transform: rotate(360deg);
+.gear {
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    font-weight: 600;
 }

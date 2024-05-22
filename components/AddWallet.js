@@ -1,8 +1,9 @@
 import React from 'react';
 import styles from '../styles/AddWallet.module.css';
 import Menubar from './Menubar';
-import AddBlockchain from './AddBlockchain';
+import WalletForm from './WalletForm';
 import Header from './Header';
+
 
 
 function AddWallet() {
@@ -21,7 +22,7 @@ function AddWallet() {
                     </h1>
                     <div className={styles.table}>
                         Add blockchain
-                        <AddBlockchain />
+                        <WalletForm />
                     </div>
                 </div>
             </div>
