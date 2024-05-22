@@ -1,7 +1,6 @@
 import styles from '../styles/Menubar.module.css';
 
-
-function Menubar() {
+function MenuBar() {
   return (
     <div className={styles.main}>
       <div className={styles.menu}>
@@ -14,4 +13,4 @@ function Menubar() {
   );
 }
 
-export default Menubar;
+export default MenuBar;
