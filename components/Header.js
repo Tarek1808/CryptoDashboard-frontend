@@ -2,9 +2,21 @@ import styles from '../styles/Header.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGear } from '@fortawesome/free-solid-svg-icons';
 import { Popover, Switch } from 'antd';
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useRouter } from 'next/router';
+import { useSelector } from 'react-redux';
 
 function Header() {
+    const router = useRouter()
+
+    const user = useSelector((state) => state.user.value)
+
+    useEffect(() => {
+        if (!user.data) {
+            router.push('/')
+        }
+    }, [user])
+
 
     const popoverContent = (
 
@@ -34,7 +46,7 @@ function Header() {
 
     return (
         <div className={styles.container}>
-            <h2 className={styles.textHeader}>Dashboard crypto</h2>
+            <h2 className={styles.textHeader} >Dashboard crypto</h2>
             <div className={styles.droite}>
                 <span><Popover
 

@@ -1,30 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from '../styles/TableWallets.module.css';
+import { useSelector } from 'react-redux';
 
 function TableWallets() {
 
-    const data = [
-        {
-            blockchain: "BTC",
-            address: "XHFKSOfezou32nenerun23",
-        },
-        {
-            blockchain: "SOL",
-            address: "XHFKSOfezou32nenerun23",
-        },
-        {
-            blockchain: "ETH",
-            address: "XHFKSOfezou32nenerun23",
-        },
-    ];
+    const user = useSelector((state) => state.user.value)
 
-    const tableData = data.map((item, index) => (
+    const [listWallets, setListWallets] = useState([])
+
+    useEffect(() => {
+        fetch(`http://localhost:3000/wallet/${user.data._id}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log("data fetch get wallet", data)
+                setListWallets(data.listWallets)
+            })
+    }, [])
+
+    const tableData = listWallets.map((item, index) => (
         <tr key={index}>
             <td>{item.blockchain}</td>
             <td>{item.address}</td>
             <td><button className={styles.deleteButton}>X</button></td>
         </tr>
     ));
+    console.log("listWallets",listWallets)
+    console.log("tableData",tableData)
 
     return (
         <div className={styles.tableContainer}>

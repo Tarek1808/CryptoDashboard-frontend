@@ -21,7 +21,7 @@ function SignUp() {
             .then(data => {
                 if (data.result) {
                     console.log("fetch signup :", data)
-                    data.result && dispatch(login({ token: data.token, username, email }));
+                    data.result && dispatch(login({ data:data.data }));
                     setEmail('')
                     setPassword('')
                     setUsername('')
