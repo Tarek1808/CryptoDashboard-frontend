@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import styles from '../styles/WalletForm.module.css';
-import { useSelector } from 'react-redux';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { addWallet } from '../reducers/wallets';
 
 function WalletForm() {
+
+    const dispatch = useDispatch()
     const [selectedCrypto, setSelectedCrypto] = useState('');
     const [newWallet, setNewWallet] = useState([]);
     // const [newAddressIndex, setNewAddressIndex] = useState(0);
@@ -27,17 +29,32 @@ function WalletForm() {
     const handleSubmit = (event) => {
         event.preventDefault();
         console.log("Adresses soumises:", newWallet);
+        const token = user.data.token
         newWallet.forEach(wallet => {
             const { nameWallet, address, user } = wallet
             fetch('http://localhost:3000/wallet', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ nameWallet, address, blockchain:selectedCrypto, user }),
+                body: JSON.stringify({ nameWallet, address, blockchain: selectedCrypto, user }),
             }).then(response => response.json())
-                .then(data => {
-                    if (data.result) {
-                        console.log("fetch add wallet :", data)
-                        // data.result && dispatch(login({ data: data.data }));
+                .then(response => {
+                    if (response.result) {
+                        console.log("fetch add wallet :", response)
+                        console.log("user.data.token :", token)
+                        console.log("address :", address) 
+                        fetch(`http://localhost:3000/users/${token}/addWallet`, {
+                            method: 'PUT',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ address }),
+                        }).then(response => response.json())
+                            .then(data => {
+                                if (data.result) {
+                                    console.log("fetch add wallet route put")
+                                    dispatch(addWallet({ nameWallet, address, blockchain: selectedCrypto}))
+                                } else {
+                                    console.log("erreur add wallet")
+                                }
+                            });
                     } else {
                         console.log("erreur add wallet")
                     }
