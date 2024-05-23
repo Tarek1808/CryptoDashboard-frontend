@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from '../styles/AddWallet.module.css';
 import MenuBar from './MenuBar';
-import WalletForm from './WalletForm';
+import WalletForm from './Walletform';
 import Header from './Header';
 
 
