@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from '../styles/AddWallet.module.css';
 import MenuBar from './MenuBar';
 import WalletForm from './Walletform';
 import Header from './Header';
-
-
+import { useRouter } from 'next/router';
 
 function AddWallet() {
+    const router = useRouter()
+    const [blockchains, setBlockchains] = useState([0])
+
+    const handleAddBlockchain = () => {
+        setBlockchains([...blockchains, blockchains.length])
+    }
+
     return (
         <div>
             <div className={styles.header}>
@@ -20,10 +26,22 @@ function AddWallet() {
                     <h1 className={styles.title}>
                         Add Wallet
                     </h1>
-                    <div className={styles.table}>
-                        Add blockchain
-                        <WalletForm />
+                    <div className={styles.blockchain}>
+                        <div className={styles.table}>
+                            {blockchains.map((index) => (
+                                <WalletForm key={index} />
+                            ))
+                            }
+                        </div>
+                        <button onClick={() => handleAddBlockchain()}>+</button>
                     </div>
+
+
+                </div>
+                <div className={styles.links}>
+                    <p onClick={()=> router.push('/')}>Login</p>
+                    <p onClick={()=> router.push('/addWallet')}>AddWallet</p>
+                    <p onClick={()=> router.push('/wallets')}>Wallets</p>
                 </div>
             </div>
         </div>
