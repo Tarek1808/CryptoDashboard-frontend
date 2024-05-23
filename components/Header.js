@@ -4,22 +4,23 @@ import { faGear } from '@fortawesome/free-solid-svg-icons';
 import { Popover, Switch } from 'antd';
 import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { clearWallets } from '../reducers/wallets';
+import { logout } from '../reducers/user';
 
 function Header() {
     const router = useRouter()
-
+    const dispatch = useDispatch()
     const user = useSelector((state) => state.user.value)
+    console.log("user depuis header", user)
 
     useEffect(() => {
-        if (!user.data) {
+        if (!user) {
             router.push('/')
         }
     }, [user])
 
-
     const popoverContent = (
-
         <div>
             <h3 className={styles.setting}>Settings</h3>
             <div className={styles.gear}>
@@ -41,8 +42,10 @@ function Header() {
             </div></div>
     );
 
-
-
+    const handleLogout = () => {
+        dispatch(logout())
+        dispatch(clearWallets())
+    }
 
     return (
         <div className={styles.container}>
@@ -58,7 +61,7 @@ function Header() {
                         // spin
                         size='xl' />
                 </Popover></span>
-                <button className={styles.button}>Logout</button>
+                <button className={styles.button} onClick={handleLogout}>Logout</button>
             </div>
         </div>
     );

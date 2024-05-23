@@ -6,21 +6,21 @@ import { loadWallets, removeWallet } from '../reducers/wallets';
 function TableWallets() {
 
     const dispatch = useDispatch()
+
     const user = useSelector((state) => state.user.value)
     console.log("user:", user)
     const wallets = useSelector((state) => state.wallets.value)
     console.log("wallets:", wallets)
 
-    const [listWallets, setListWallets] = useState([])
-
     useEffect(() => {
+        if(user.data) {
         fetch(`http://localhost:3000/wallet/${user.data.token}`)
             .then(response => response.json())
             .then(data => {
                 console.log("data fetch get wallet", data)
-                setListWallets(data.listWallets)
                 dispatch(loadWallets(data.listWallets))
             })
+        }
     }, [])
 
     const handleDelete = (address) => {
@@ -59,7 +59,6 @@ function TableWallets() {
             <td><button className={styles.deleteButton} onClick={() => handleDelete(item.address)}>X</button></td>
         </tr>
     ));
-    // console.log("listWallets", listWallets)
     console.log("tableData", tableData)
 
     return (

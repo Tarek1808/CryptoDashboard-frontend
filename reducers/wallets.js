@@ -16,9 +16,12 @@ export const walletSlice = createSlice({
           },
         loadWallets: (state, action) => {
             state.value = action.payload
+        },
+        clearWallets: (state) => {
+            state.value = []
         }
     },
 });
 
-export const { addWallet, removeWallet, loadWallets } = walletSlice.actions;
+export const { addWallet, removeWallet, loadWallets, clearWallets } = walletSlice.actions;
 export default walletSlice.reducer;
