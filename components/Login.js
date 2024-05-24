@@ -93,11 +93,6 @@ function Login() {
                 <Modal onCancel={() => handleCancelSignUp()} open={signUpModalVisible} footer={null}>
                     <SignUp />
                 </Modal>
-                <div className={styles.links}>
-                    <p><a href="http://localhost:3001/">Login</a></p>
-                    <p><a href="http://localhost:3001/addWallet">AddWallet</a></p>
-                    <p><a href="http://localhost:3001/wallets">Wallets</a></p>
-                </div>
             </main>
         </div>
     );
