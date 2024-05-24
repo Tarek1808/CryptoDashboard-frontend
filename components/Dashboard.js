@@ -1,9 +1,15 @@
+
+export default Dashboard;
 import styles from '../styles/Wallets.module.css';
 import MenuBar from './MenuBar';
 import Header from './Header';
-
+import React, { useState } from 'react';
+import TableDash from './TableDash';
 
 function Dashboard() {
+  const [totalValue, setTotalValue] = useState(15555);
+    const [percentageChange, setPercentageChange] = useState(10);
+    const [lastUpdateDate, setLastUpdateDate] = useState('10/05/2024');
   return (
     <div>
       <div className={styles.header}>
@@ -19,6 +25,11 @@ function Dashboard() {
           </h1>
           <div className={styles.table}>
             Tableau Dashboard
+            <div className={styles.summary}>
+                <h2>{totalValue} $</h2>
+                <p>+{percentageChange}% since the {lastUpdateDate}</p>
+            </div>
+            <TableDash />
           </div>
         </div>
       </div>
@@ -28,5 +39,3 @@ function Dashboard() {
     </div>
   );
 }
-
-export default Dashboard;
