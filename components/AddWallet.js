@@ -3,10 +3,8 @@ import styles from '../styles/AddWallet.module.css';
 import MenuBar from './MenuBar';
 import WalletForm from './WalletForm';
 import Header from './Header';
-import { useRouter } from 'next/router';
 
 function AddWallet() {
-    const router = useRouter()
     const [blockchains, setBlockchains] = useState([0])
 
     const handleAddBlockchain = () => {
@@ -36,13 +34,6 @@ function AddWallet() {
                         <button className={styles.buttonplus}
                         onClick={() => handleAddBlockchain()}>+</button>
                     </div>
-
-
-                </div>
-                <div className={styles.links}>
-                    <p onClick={()=> router.push('/')}>Login</p>
-                    <p onClick={()=> router.push('/addWallet')}>AddWallet</p>
-                    <p onClick={()=> router.push('/wallets')}>Wallets</p>
                 </div>
             </div>
         </div>

@@ -1,27 +1,48 @@
 import React, { useState } from 'react';
 import styles from '../styles/WalletForm.module.css';
-import { useSelector } from 'react-redux';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { addWallet, loadWallets } from '../reducers/wallets';
 
 function WalletForm() {
+
+    const dispatch = useDispatch()
     const [selectedCrypto, setSelectedCrypto] = useState('');
     const [newWallet, setNewWallet] = useState([]);
+
+
+    const [refreshWallets, setRefreshWallets] = useState(false)
+
     const [styleBox, setStyleBox] = useState({});
     // const [newAddressIndex, setNewAddressIndex] = useState(0);
     const user = useSelector((state) => state.user.value)
-    console.log("user:", user)
+    const token = user.data.token
+    // console.log("user:", user.data)
+
+    useEffect(() => {
+        if (user.data) {
+            fetch(`http://localhost:3000/wallet/${token}`)
+                .then(response => response.json())
+                .then(data => {
+                    console.log("data fetch get wallet addwallet", data)
+                    dispatch(loadWallets(data.listWallets));
+                });
+        }
+    }, [refreshWallets]);
 
     const handleCryptoChange = (event) => {
         setSelectedCrypto(event.target.value);
         if (event.target.value !== '') {
+
             setNewWallet([{ address: '', nameWallet: '', user: user.data._id }]);
             if (event.target.value === "Ethereum") {
                 setStyleBox({ backgroundColor: 'rgb(74, 94, 196)' });
-              
+
         } else if (event.target.value === "Solana") {
             setStyleBox({ backgroundColor: 'rgb(71, 172, 186)'});
         } else if (event.target.value === "Bitcoin") {
             setStyleBox({ backgroundColor: '#FF9900'})
+
+
         }
         else {
             setNewWallet([]);
@@ -31,23 +52,39 @@ function WalletForm() {
 
     const handleAddAddressClick = (event) => {
         event.preventDefault();
-        setNewWallet([...newWallet, { address: '', nameWallet: '', user: user.data._id }]);
+        setNewWallet([...newWallet, { address: '', nameWallet: '', user: user.data.token }]);
     };
 
     const handleSubmit = (event) => {
         event.preventDefault();
         console.log("Adresses soumises:", newWallet);
+        const token = user.data.token
         newWallet.forEach(wallet => {
             const { nameWallet, address, user } = wallet
             fetch('http://localhost:3000/wallet', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ nameWallet, address, blockchain:selectedCrypto, user }),
+                body: JSON.stringify({ nameWallet, address, blockchain: selectedCrypto, user }),
+            }).then(response => response.json())
+                .then(response => {
+                    if (response.result) {
+                        console.log("fetch add wallet :", response)
+                        console.log("user.data.token :", token)
+                        console.log("address :", address)
+                        fetch(`http://localhost:3000/users/${token}/addWallet`, {
+                            method: 'PUT',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ address }),
             }).then(response => response.json())
                 .then(data => {
                     if (data.result) {
-                        console.log("fetch add wallet :", data)
-                        // data.result && dispatch(login({ data: data.data }));
+                                    console.log("fetch add wallet route put")
+                                    dispatch(addWallet({ nameWallet, address, blockchain: selectedCrypto }))
+                                    setRefreshWallets(!refreshWallets)
+                                } else {
+                                    console.log("erreur add wallet")
+                                }
+                            });
                     } else {
                         console.log("erreur add wallet")
                     }
@@ -55,7 +92,6 @@ function WalletForm() {
         })
     };
 
-    console.log("wallets:", newWallet)
 
     return (
         <form className={styles.form} style={styleBox}>
