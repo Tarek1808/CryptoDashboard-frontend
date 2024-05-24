@@ -33,7 +33,8 @@ function AddWallet() {
                             ))
                             }
                         </div>
-                        <button onClick={() => handleAddBlockchain()}>+</button>
+                        <button className={styles.buttonplus}
+                        onClick={() => handleAddBlockchain()}>+</button>
                     </div>
 
 
