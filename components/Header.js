@@ -15,7 +15,7 @@ function Header() {
     console.log("user depuis header", user)
 
     useEffect(() => {
-        if (!user) {
+        if (!user.data.token) {
             router.push('/')
         }
     }, [user])
