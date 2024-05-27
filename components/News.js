@@ -8,38 +8,38 @@ import Article from './Article';
 
 function News() {
   const [newsData, setNewsData] = useState([]);
+ console.log(newsData);
+  
+//
 
-  const news = newsData.map((data, i) => {
-    return (
-      <Article key={i}
+  useEffect(() => {
+    
+    fetch('http://localhost:3000/news')
+      .then (response => response.json())
+      .then (data => {
+        if (data.result) {
+          console.log(data.news.results)
+           setNewsData(data.news.results.slice[0, 3])
+          
+          
+          //  if (description.lenght > 200) {
+          //   description = description.substring(0, 200) + '...';
+          //  }
+        }
+      }, );
+  },[]);
+
+let news;
+  if (newsData && newsData.length > 0) {
+  news = newsData.map((data) => 
+     (
+      <Article
         image={data.image_url}
         title={data.title}
         description={data.description}
         link={data.link} />
     )
-  })
-
-
-  useEffect(() => {
-    console.log('actif')
-    fetch('http://localhost:3000/news')
-      .then(response => response.json())
-      .then(data => {
-        if (data.result) {
-          console.log(data.news.results)
-           setNewsData(data.news.results)
-          console.log(newsData);
-          //  document.querySelector('#icon').src = data.image_url;
-          //  document.querySelector('#title').src = data.title;
-          //  document.querySelector('#description').src = data.description;
-          //  document.querySelector('#link').src = data.link;
-          //  let description = data.description;
-          //  if (description.lenght > 200) {
-          //   description = description.substring(0, 200) + '...';
-          //  }
-        }
-      }, []);
-  })
+  )}
 
 
   return (
@@ -57,7 +57,7 @@ function News() {
           </h1>
           <div className={styles.cadre}>
             {news}
-            <Article />
+           
           </div>
           <div className={styles.table}>
 

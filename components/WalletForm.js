@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from '../styles/WalletForm.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { addWallet, loadWallets } from '../reducers/wallets';
+
 
 function WalletForm() {
 
@@ -16,7 +17,7 @@ function WalletForm() {
     // const [newAddressIndex, setNewAddressIndex] = useState(0);
     const user = useSelector((state) => state.user.value)
     const token = user.data.token
-    // console.log("user:", user.data)
+    console.log("user:", user.data)
 
     useEffect(() => {
         if (user.data) {
@@ -33,7 +34,7 @@ function WalletForm() {
         setSelectedCrypto(event.target.value);
         if (event.target.value !== '') {
 
-            setNewWallet([{ address: '', nameWallet: '', user: user.data._id }]);
+            setNewWallet([{ address: '', nameWallet: '', user: user.data.token }]);
             if (event.target.value === "Ethereum") {
                 setStyleBox({ backgroundColor: 'rgb(74, 94, 196)' });
 
