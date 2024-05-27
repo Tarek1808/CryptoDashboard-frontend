@@ -37,7 +37,7 @@ function Header() {
                         defaultChecked
                         // onChange={onChange}
                         style={{ backgroundColor: '#EC7126' }}
-                        arial-readonly />  $
+                        aria-readonly />  $
                 </span>
             </div></div>
     );

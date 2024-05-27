@@ -14,9 +14,10 @@ function Dashboard() {
   const token = user.data.token
   const wallets = useSelector((state) => state.wallets.value);
   console.log("wallets", wallets)
-
+  const value = useSelector((state) => state.value.value)
+  
   const [refresh, setRefresh] = useState(false)
-  const [totalValue, setTotalValue] = useState(15555);
+  const [totalValue, setTotalValue] = useState(value.totalValue.toFixed(2));
   const [percentageChange, setPercentageChange] = useState(10);
   const [lastUpdateDate, setLastUpdateDate] = useState('10/05/2024');
   
@@ -42,7 +43,7 @@ function Dashboard() {
           console.log("refresh ok")
         }
       })
-  }, [refresh])
+  }, [wallets])
 
   return (
     <div>
