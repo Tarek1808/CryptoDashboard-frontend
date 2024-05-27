@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  value: null,
+  value: { data: { token: null } },
 };
 
 export const userSlice = createSlice({
@@ -12,7 +12,7 @@ export const userSlice = createSlice({
       state.value = action.payload;
     },
     logout: (state) => {
-      state.value = null;
+      state.value = { data: { token: null } };
     },
   },
 });

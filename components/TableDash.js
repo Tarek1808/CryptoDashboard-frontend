@@ -10,12 +10,13 @@ function TableDash() {
     const tableData = wallets.map((item, index) => {
         if (item.holdings.length > 0) {
             const { crypto, quantity } = item.holdings[0]
+            const value = (quantity*crypto.price).toFixed(2)
             return (
                 <tr key={index}>
                     <td>{crypto.name}</td>
                     <td>{quantity}</td>
-                    <td>{item.price}</td>
-                    <td>{item.totalValue}</td>
+                    <td>{crypto.price}</td>
+                    <td>{value}</td>
                 </tr>
             )
         } else return

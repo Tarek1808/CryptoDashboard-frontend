@@ -15,6 +15,11 @@ function Dashboard() {
   const wallets = useSelector((state) => state.wallets.value);
   console.log("wallets", wallets)
 
+  const [refresh, setRefresh] = useState(false)
+  const [totalValue, setTotalValue] = useState(15555);
+  const [percentageChange, setPercentageChange] = useState(10);
+  const [lastUpdateDate, setLastUpdateDate] = useState('10/05/2024');
+  
   useEffect(() => {
     if (user.data) {
       fetch(`http://localhost:3000/wallet/${token}`)
@@ -26,10 +31,6 @@ function Dashboard() {
     }
   }, [refresh]);
 
-  const [refresh, setRefresh] = useState(false)
-  const [totalValue, setTotalValue] = useState(15555);
-  const [percentageChange, setPercentageChange] = useState(10);
-  const [lastUpdateDate, setLastUpdateDate] = useState('10/05/2024');
 
   useEffect(() => {
     fetch(`http://localhost:3000/cryptos/contentWallet/${token}`, {
