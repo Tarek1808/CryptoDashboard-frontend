@@ -23,7 +23,7 @@ function TableDash() {
                 if (!cryptoMap[crypto.name]) {
                     cryptoMap[crypto.name] = {
                         name: crypto.name,
-                        price: crypto.price,
+                        price: Number(crypto.price),
                         quantity: 0,
                         value: 0
                     };
@@ -57,7 +57,7 @@ function TableDash() {
             <tr key={index}>
                 <td>{name}</td>
                 <td>{quantity.toFixed(6)}</td>
-                <td>{price}</td>
+                <td>{price.toFixed(2)}</td>
                 <td>{value.toFixed(2)}</td>
             </tr>
         )

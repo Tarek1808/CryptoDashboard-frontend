@@ -3,6 +3,8 @@ import styles from '../styles/TableWallets.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadWallets, removeWallet } from '../reducers/wallets';
 
+const BACKEND_ADDRESS = "http://localhost:3000"
+
 function TableWallets() {
 
     const dispatch = useDispatch()
@@ -14,7 +16,7 @@ function TableWallets() {
 
     useEffect(() => {
         if(user.data) {
-        fetch(`http://localhost:3000/wallet/${user.data.token}`)
+        fetch(`${BACKEND_ADDRESS}/wallet/${user.data.token}`)
             .then(response => response.json())
             .then(data => {
                 console.log("data fetch get wallet", data)
@@ -25,7 +27,7 @@ function TableWallets() {
 
     const handleDelete = (address) => {
         const token = user.data.token
-        fetch(`http://localhost:3000/users/${token}/removeWallet`, {
+        fetch(`${BACKEND_ADDRESS}/users/${token}/removeWallet`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ address }),
@@ -33,7 +35,7 @@ function TableWallets() {
             .then(data => {
                 if (data.result) {
                     console.log("fetch remove wallet route put ok")
-                    fetch('http://localhost:3000/wallet', {
+                    fetch(`${BACKEND_ADDRESS}/wallet`, {
                         method: 'DELETE',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ address }),

@@ -4,6 +4,8 @@ import { useDispatch } from 'react-redux';
 import { login } from '../reducers/user';
 import { useRouter } from 'next/router';
 
+const BACKEND_ADDRESS = "http://localhost:3000"
+
 function SignUp() {
     const dispatch = useDispatch()
     const router = useRouter();
@@ -13,7 +15,7 @@ function SignUp() {
     const [password, setPassword] = useState('');
 
     const handleSubmit = () => {
-        fetch('http://localhost:3000/users/signup', {
+        fetch(`${BACKEND_ADDRESS}/users/signup`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, username, password }),

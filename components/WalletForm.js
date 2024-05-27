@@ -3,6 +3,8 @@ import styles from '../styles/WalletForm.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { addWallet, loadWallets } from '../reducers/wallets';
 
+const BACKEND_ADDRESS = "http://localhost:3000"
+
 function WalletForm() {
 
     const dispatch = useDispatch()
@@ -17,7 +19,7 @@ function WalletForm() {
 
     useEffect(() => {
         if (user.data) {
-            fetch(`http://localhost:3000/wallet/${token}`)
+            fetch(`${BACKEND_ADDRESS}/wallet/${token}`)
                 .then(response => response.json())
                 .then(data => {
                     console.log("data fetch get wallet addwallet", data)
@@ -54,7 +56,7 @@ function WalletForm() {
         const token = user.data.token
         newWallet.forEach(wallet => {
             const { nameWallet, address, user } = wallet
-            fetch('http://localhost:3000/wallet', {
+            fetch(`${BACKEND_ADDRESS}/wallet`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ nameWallet, address, blockchain: selectedCrypto, user }),
@@ -64,7 +66,7 @@ function WalletForm() {
                         console.log("fetch add wallet :", response)
                         console.log("user.data.token :", token)
                         console.log("address :", address)
-                        fetch(`http://localhost:3000/users/${token}/addWallet`, {
+                        fetch(`${BACKEND_ADDRESS}/users/${token}/addWallet`, {
                             method: 'PUT',
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify({ address }),

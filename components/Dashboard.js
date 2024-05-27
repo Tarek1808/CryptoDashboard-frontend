@@ -8,6 +8,8 @@ import TableDash from './TableDash';
 import { useSelector, useDispatch } from 'react-redux';
 import { loadWallets } from '../reducers/wallets';
 
+const BACKEND_ADDRESS = "http://localhost:3000"
+
 function Dashboard() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.value);
@@ -15,32 +17,39 @@ function Dashboard() {
   const wallets = useSelector((state) => state.wallets.value);
   console.log("wallets", wallets)
   const value = useSelector((state) => state.value.value)
-  
+
   const [refresh, setRefresh] = useState(false)
   const [totalValue, setTotalValue] = useState(value.totalValue.toFixed(2));
   const [percentageChange, setPercentageChange] = useState(10);
   const [lastUpdateDate, setLastUpdateDate] = useState('10/05/2024');
-  
+
   useEffect(() => {
-    if (user.data) {
-      fetch(`http://localhost:3000/wallet/${token}`)
+      fetch(`${BACKEND_ADDRESS}/wallet/${token}`)
         .then(response => response.json())
         .then(data => {
           console.log("data fetch get wallet dashboard", data)
           dispatch(loadWallets(data.listWallets));
         });
-    }
   }, [refresh]);
 
-
   useEffect(() => {
-    fetch(`http://localhost:3000/cryptos/contentWallet/${token}`, {
+    fetch(`${BACKEND_ADDRESS}/cryptos/contentWallet/${token}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
     }).then(response => response.json())
       .then(data => {
         if (data.result) {
           console.log("refresh ok")
+        }
+      })
+
+    fetch(`${BACKEND_ADDRESS}/cryptos/price`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+    }).then(response => response.json())
+      .then(data => {
+        if (data.result) {
+          console.log("prices updated")
         }
       })
   }, [wallets])
