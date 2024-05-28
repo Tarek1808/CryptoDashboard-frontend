@@ -1,13 +1,14 @@
+import React, { useState } from 'react';
 import styles from '../styles/Login.module.css';
 import { Modal } from 'antd';
 import SignUp from './SignUp.js';
-import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { login } from '../reducers/user';
 import { useRouter } from 'next/router';
+import backgroundImage from './images/background.jpg';
+import logo from './images/logo.png';
 
 function Login() {
-
     const dispatch = useDispatch();
     const router = useRouter();
 
@@ -46,34 +47,17 @@ function Login() {
     }
 
     return (
-        <div className={styles.container}>
-            <header className={styles.header}>Dashboard Crypto</header>
-            <main className={styles.main}>
+        <div className={styles.container} style={{ backgroundImage: `url(${backgroundImage.src})` }}>
+            <div className={styles.logo}>
+                <img src={logo.src} alt="Logo" />
+            </div>
+            <div className={styles.overlay}>
                 <div className={styles.content}>
                     <div className={styles.presentation}>
-                        <h2>Welcome to Dashboard Crypto!</h2>
-                        <p>Here you can manage your crypto assets...
-                            Le Lorem Ipsum est simplement du faux texte employé dans la composition et la
-                            mise en page avant impression. Le Lorem Ipsum est le faux texte standard de
-                            l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla
-                            ensemble des morceaux de texte pour réaliser un livre spécimen de polices de
-                            texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la
-                            bureautique informatique, sans que son contenu n'en soit modifié. Il a été
-                            popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant
-                            des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des
-                            applications de mise en page de texte, comme Aldus PageMaker.
-
-                            Le Lorem Ipsum est simplement du faux texte employé dans la composition et la
-                            mise en page avant impression. Le Lorem Ipsum est le faux texte standard de
-                            l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla
-                            ensemble des morceaux de texte pour réaliser un livre spécimen de polices de
-                            texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la
-                            bureautique informatique, sans que son contenu n'en soit modifié. Il a été
-                            popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant
-                            des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des
-                            applications de mise en page de texte, comme Aldus PageMaker.
+                        <h2 className={styles.titlepresntation}>Welcome to  Crypto Dashboard!</h2>
+                        <p className={styles.paragraphpresntation}>
+                        CryptoDashboard revolutionizes cryptocurrency portfolio management. With intuitive charts, it provides real-time analysis of asset performance, empowering informed decision-making. Integrated news keeps you updated on market trends. Track changes since your last login for a precise view of investment evolution. Transform your cryptocurrency management approach with CryptoDashboard today!
                         </p>
-
                     </div>
                     <div className={styles.auth}>
                         <div className={styles.inputContainer}>
@@ -90,10 +74,10 @@ function Login() {
                     </div>
                 </div>
 
-                <Modal onCancel={() => handleCancelSignUp()} open={signUpModalVisible} footer={null}>
+                <Modal className={styles.customModal} onCancel={() => handleCancelSignUp()} open={signUpModalVisible} footer={null}>
                     <SignUp />
                 </Modal>
-            </main>
+            </div>
         </div>
     );
 }

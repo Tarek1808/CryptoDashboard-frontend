@@ -33,21 +33,23 @@ function SignUp() {
     };
 
     return (
-        <div className={styles.container}>
-            <p className={styles.title}>Create your CryptoDashboard account</p>
-            <div className={styles.inputContainer}>
-                <label className={styles.labelCaption}>Username</label>
-                <input type="text" className={styles.input} onChange={(e) => setUsername(e.target.value)} value={username} />
+        <div className={styles.modalContainer}>
+            <div className={styles.container}>
+                <p className={styles.title}>Create your CryptoDashboard account</p>
+                <div className={styles.inputContainer}>
+                    <label className={styles.labelCaption}>Username</label>
+                    <input type="text" className={styles.input} onChange={(e) => setUsername(e.target.value)} value={username} />
+                </div>
+                <div className={styles.inputContainer}>
+                    <label className={styles.labelCaption}>Email</label>
+                    <input type="text" className={styles.input} onChange={(e) => setEmail(e.target.value)} value={email} />
+                </div>
+                <div className={styles.inputContainer}>
+                    <label className={styles.labelCaption}> Password </label>
+                    <input type="password" className={styles.input} onChange={(e) => setPassword(e.target.value)} value={password} />
+                </div>
+                <button className={styles.button} onClick={() => handleSubmit()}>SIGN UP</button>
             </div>
-            <div className={styles.inputContainer}>
-                <label className={styles.labelCaption}>Email</label>
-                <input type="text" className={styles.input} onChange={(e) => setEmail(e.target.value)} value={email} />
-            </div>
-            <div className={styles.inputContainer}>
-                <label className={styles.labelCaption}> Password </label>
-                <input type="password" className={styles.input} onChange={(e) => setPassword(e.target.value)} value={password} />
-            </div>
-            <button className={styles.button} onClick={() => handleSubmit()}>SIGN UP</button>
         </div>
     );
 }
