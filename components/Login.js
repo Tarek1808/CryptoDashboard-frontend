@@ -8,7 +8,7 @@ import { useRouter } from 'next/router';
 import { updateData, updateTotalValue } from '../reducers/value';
 import { loadWallets } from '../reducers/wallets.js';
 
-const BACKEND_ADDRESS = "http://localhost:3000"
+const BACKEND_ADDRESS = "https://crypto-dashboard-backend-gamma.vercel.app"
 
 function Login() {
 
@@ -39,7 +39,7 @@ function Login() {
                     if (data.result) {
                         console.log("utilisateur connecté via sign in:", data)
                         const { token, username, email, wallets, totalValue } = data
-                        data.result && dispatch(login({ token, username, email, wallets, totalValue }));
+                        dispatch(login({ token, username, email, wallets, totalValue }));
                         setPassword('')
                         setUsername('')
                         fetch(`${BACKEND_ADDRESS}/cryptos/price`, {

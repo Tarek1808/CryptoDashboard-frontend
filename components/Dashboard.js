@@ -3,7 +3,7 @@ export default Dashboard;
 import styles from '../styles/Wallets.module.css';
 import MenuBar from './MenuBar';
 import Header from './Header';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import TableDash from './TableDash';
 import { useSelector } from 'react-redux';
 
@@ -16,16 +16,27 @@ function Dashboard() {
   console.log("value", value)
 
   const user = useSelector((state) => state.user.value)
-  const valueLastConnection = user.totalValue[user.totalValue.length - 1].value
-  const dateLastConnection = user.totalValue[user.totalValue.length - 1].date
-  const date = new Date(dateLastConnection);
-    const formattedDate = date.toLocaleDateString('fr-FR', {
-      day: '2-digit',
-      month: '2-digit',
-      year: 'numeric',
-    });
 
-  const percentageChange = ((totalValueThisConnection-valueLastConnection)/totalValueThisConnection)*100
+  const [valueLastConnection, setValueLastConnection] = useState(0)
+
+  const [formattedDate, setFormattedDate] = useState('')
+
+  useEffect(() => {
+    if (user.totalValue && user.totalValue.length > 0) {
+      const lastValue = user.totalValue[user.totalValue.length - 1].value;
+      setValueLastConnection(lastValue);
+
+      const dateLastConnection = user.totalValue[user.totalValue.length - 1].date;
+      const date = new Date(dateLastConnection);
+      setFormattedDate(date.toLocaleDateString('fr-FR', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+      }));
+    }
+  }, [user.totalValue]);
+
+  const percentageChange = valueLastConnection ? ((totalValueThisConnection - valueLastConnection) / totalValueThisConnection) * 100 : 0;
 
   return (
     <div>
@@ -43,7 +54,7 @@ function Dashboard() {
           <div className={styles.table}>
             <div className={styles.summary}>
               <h2>{totalValueThisConnection.toFixed(2)} $</h2>
-              <p>{percentageChange.toFixed(2)}% since your last connection ({formattedDate})</p>
+              {formattedDate && <p>{percentageChange.toFixed(2)}% since your last connection ({formattedDate})</p>}
             </div>
             <TableDash />
           </div>

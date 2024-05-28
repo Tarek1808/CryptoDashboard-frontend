@@ -3,10 +3,8 @@ import styles from '../styles/SignUp.module.css';
 import { useDispatch } from 'react-redux';
 import { login } from '../reducers/user';
 import { useRouter } from 'next/router';
-import { updateData, updateTotalValue } from '../reducers/value';
-import { loadWallets } from '../reducers/wallets';
 
-const BACKEND_ADDRESS = "http://localhost:3000"
+const BACKEND_ADDRESS = "https://crypto-dashboard-backend-gamma.vercel.app"
 
 function SignUp() {
     const dispatch = useDispatch()
@@ -25,19 +23,21 @@ function SignUp() {
             .then(data => {
                 if (data.result) {
                     console.log("fetch signup :", data)
-                    data.result && dispatch(login({ data }));
+                    const { token, username, email, wallets, totalValue } = data
+                    dispatch(login({ token, username, email, wallets, totalValue }));
                     setEmail('')
                     setPassword('')
                     setUsername('')
+                    
                     fetch(`${BACKEND_ADDRESS}/cryptos/price`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                     }).then(response => response.json())
-                        .then(data => {
-                            if (data.result) {
-                                console.log("prices updated")
-                            }
-                        })
+                    .then(data => {
+                        if (data.result) {
+                            console.log("prices updated")
+                        }
+                    })
                     router.push('/addWallet')
                 } else {
                     console.log("erreur sign up")

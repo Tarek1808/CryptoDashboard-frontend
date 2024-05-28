@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loadWallets } from '../reducers/wallets';
 import { updateData, updateTotalValue } from '../reducers/value';
 
-const BACKEND_ADDRESS = "http://localhost:3000"
+const BACKEND_ADDRESS = "https://crypto-dashboard-backend-gamma.vercel.app"
 
 function TableWallets() {
 
