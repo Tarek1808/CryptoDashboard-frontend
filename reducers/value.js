@@ -3,9 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
     value: {
         totalValue: 0,
-        btcValue: null,
-        ethValue: null,
-        solValue: null,
+        cryptoData: null,
     },
 };
 
@@ -16,17 +14,11 @@ export const valueSlice = createSlice({
         updateTotalValue: (state, action) => {
             state.value.totalValue = action.payload;
         },
-        updateValue: (state, action) => {
-            const cryptoName = action.payload.name
-            if (cryptoName === "BTC")
-                state.value.btcValue = action.payload.quantity
-            else if (cryptoName === "ETH")
-                state.value.ethValue = action.payload.quantity
-            else if (cryptoName === "SOL")
-                state.value.solValue = action.payload.quantity
+        updateData: (state, action) => {
+            state.value.cryptoData = action.payload
         },
     },
 });
 
-export const { updateValue, updateTotalValue } = valueSlice.actions;
+export const { updateData, updateTotalValue } = valueSlice.actions;
 export default valueSlice.reducer;

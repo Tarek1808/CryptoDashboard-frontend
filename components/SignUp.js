@@ -3,6 +3,8 @@ import styles from '../styles/SignUp.module.css';
 import { useDispatch } from 'react-redux';
 import { login } from '../reducers/user';
 import { useRouter } from 'next/router';
+import { updateData, updateTotalValue } from '../reducers/value';
+import { loadWallets } from '../reducers/wallets';
 
 const BACKEND_ADDRESS = "http://localhost:3000"
 
@@ -27,6 +29,15 @@ function SignUp() {
                     setEmail('')
                     setPassword('')
                     setUsername('')
+                    fetch(`${BACKEND_ADDRESS}/cryptos/price`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                    }).then(response => response.json())
+                        .then(data => {
+                            if (data.result) {
+                                console.log("prices updated")
+                            }
+                        })
                     router.push('/addWallet')
                 } else {
                     console.log("erreur sign up")
