@@ -4,6 +4,8 @@ import { useDispatch } from 'react-redux';
 import { login } from '../reducers/user';
 import { useRouter } from 'next/router';
 
+const BACKEND_ADDRESS = "https://crypto-dashboard-backend-gamma.vercel.app"
+
 
 const EMAIL_REGEX =
   /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -21,7 +23,7 @@ function SignUp() {
 
     const handleSubmit = () => {
         if (EMAIL_REGEX.test(email)){
-        fetch('http://localhost:3000/users/signup', {
+        fetch(`${BACKEND_ADDRESS}/users/signup`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, username, password }),
@@ -29,10 +31,21 @@ function SignUp() {
             .then(data => {
                 if (data.result) {
                     console.log("fetch signup :", data)
-                    data.result && dispatch(login({ data }));
+                    const { token, username, email, wallets, totalValue } = data
+                    dispatch(login({ token, username, email, wallets, totalValue }));
                     setEmail('')
                     setPassword('')
                     setUsername('')
+                    
+                    fetch(`${BACKEND_ADDRESS}/cryptos/price`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                    }).then(response => response.json())
+                    .then(data => {
+                        if (data.result) {
+                            console.log("prices updated")
+                        }
+                    })
                     router.push('/addWallet')
                 } else {
                     console.log("erreur sign up")

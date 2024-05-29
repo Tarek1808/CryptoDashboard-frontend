@@ -3,46 +3,40 @@ export default Dashboard;
 import styles from '../styles/Wallets.module.css';
 import MenuBar from './MenuBar';
 import Header from './Header';
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import TableDash from './TableDash';
-import { useSelector, useDispatch } from 'react-redux';
-import { loadWallets } from '../reducers/wallets';
+import { useSelector } from 'react-redux';
 
 function Dashboard() {
-  const dispatch = useDispatch();
-  const user = useSelector((state) => state.user.value);
-  const token = user.data.token
   const wallets = useSelector((state) => state.wallets.value);
   console.log("wallets", wallets)
 
-  const [refresh, setRefresh] = useState(false)
-  const [totalValue, setTotalValue] = useState(15555);
-  const [percentageChange, setPercentageChange] = useState(10);
-  const [lastUpdateDate, setLastUpdateDate] = useState('10/05/2024');
-  
+  const value = useSelector((state) => state.value.value)
+  const totalValueThisConnection = value.totalValue
+  console.log("value", value)
+
+  const user = useSelector((state) => state.user.value)
+
+  const [valueLastConnection, setValueLastConnection] = useState(0)
+
+  const [formattedDate, setFormattedDate] = useState('')
+
   useEffect(() => {
-    if (user.data) {
-      fetch(`http://localhost:3000/wallet/${token}`)
-        .then(response => response.json())
-        .then(data => {
-          console.log("data fetch get wallet dashboard", data)
-          dispatch(loadWallets(data.listWallets));
-        });
+    if (user.totalValue && user.totalValue.length > 0) {
+      const lastValue = user.totalValue[user.totalValue.length - 1].value;
+      setValueLastConnection(lastValue);
+
+      const dateLastConnection = user.totalValue[user.totalValue.length - 1].date;
+      const date = new Date(dateLastConnection);
+      setFormattedDate(date.toLocaleDateString('fr-FR', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+      }));
     }
-  }, [refresh]);
+  }, [user.totalValue]);
 
-
-  useEffect(() => {
-    fetch(`http://localhost:3000/cryptos/contentWallet/${token}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-    }).then(response => response.json())
-      .then(data => {
-        if (data.result) {
-          console.log("refresh ok")
-        }
-      })
-  }, [refresh])
+  const percentageChange = valueLastConnection ? ((totalValueThisConnection - valueLastConnection) / totalValueThisConnection) * 100 : 0;
 
   return (
     <div>
@@ -59,12 +53,11 @@ function Dashboard() {
           </h1>
           <div className={styles.table}>
             <div className={styles.summary}>
-              <h2>{totalValue} $</h2>
-              <p>+{percentageChange}% since the {lastUpdateDate}</p>
+              <h2>{totalValueThisConnection.toFixed(2)} $</h2>
+              {formattedDate && <p>{percentageChange.toFixed(2)}% since your last connection ({formattedDate})</p>}
             </div>
             <TableDash />
           </div>
-          <button onClick={() => setRefresh(!refresh)}>Refresh</button>
         </div>
       </div>
     </div>
