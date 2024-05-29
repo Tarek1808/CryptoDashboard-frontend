@@ -85,7 +85,7 @@ function TableWallets() {
             });
     }
 
-    const tableData = wallets.map((item, index) => (
+    const tableData = wallets?.map((item, index) => (
         <tr key={index}>
             <td>{item.blockchain}</td>
             <td>{item.address}</td>
