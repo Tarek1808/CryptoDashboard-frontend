@@ -26,14 +26,15 @@ function Header() {
             <h3 className={styles.setting}>Settings</h3>
             <div className={styles.gear}>
 
-                <p>Account Info</p>
+                <p onClick={()=> router.push('/accountInfos')}>Account Informations</p>
                 <span>Dark Mode     <Switch
                     defaultChecked
                     style={{ backgroundColor: '#EC7126' }}
                 // onChange={onChange}
                 />
-                </span><br />
-                <span>€
+                </span>
+                <br />
+                <span>  €
                     <Switch
                         defaultChecked
                         // onChange={onChange}
@@ -64,9 +65,21 @@ function Header() {
                             size='xl' />
                     </Popover>
                 </span>
+                <span><Popover
+                    
+                    content={popoverContent}
+
+                    trigger='click'>
+                    <FontAwesomeIcon
+                        icon={faGear}
+                        // spin
+                        size='xl' />
+                </Popover></span>
                 <button className={styles.button} onClick={handleLogout}>Logout</button>
             </div>
         </div>
+        
+        
     );
 }
     

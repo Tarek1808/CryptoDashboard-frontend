@@ -14,8 +14,14 @@ export const userSlice = createSlice({
     logout: (state) => {
       state.value = { };
     },
+    updateEmail: (state,action) => {
+      state.value.email = action.payload
+    },
+    pushTotalValue: (state,action) => {
+      state.value.totalValue.push(action.payload)
+    },
   },
 });
 
-export const { login, logout } = userSlice.actions;
+export const { login, logout, updateEmail, pushTotalValue } = userSlice.actions;
 export default userSlice.reducer;

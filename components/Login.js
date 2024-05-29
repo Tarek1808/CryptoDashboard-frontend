@@ -9,6 +9,7 @@ import backgroundImage from './images/background.jpg';
 import logo from './images/logo.png';
 import { updateData, updateTotalValue } from '../reducers/value';
 import { loadWallets } from '../reducers/wallets.js';
+import { pushTotalValue } from '../reducers/user';
 
 const BACKEND_ADDRESS = "https://crypto-dashboard-backend-gamma.vercel.app"
 
@@ -75,7 +76,7 @@ function Login() {
                                 // si la crypto est déjà dans le tableau cryptoData, on ajoute la quantité et la value aux valeurs existantes
                                 // si la crypto n'est pas dans cryptoData, on créé un nouvel élément dans le tableau et on initialise la quantité et value à 0
                                 wallets.forEach(wallet => {
-                                    if (wallet.holdings.length < 0) return
+                                    if (wallet.holdings.length === 0) return
 
                                     const { crypto, quantity } = wallet.holdings[0];
                                     if (!cryptoMap[crypto.name]) {
@@ -102,6 +103,10 @@ function Login() {
                                 })
                                 console.log("total value:", totalValue)
                                 dispatch(updateTotalValue(totalValue))
+                                dispatch(pushTotalValue({
+                                    value:totalValue,
+                                    date: Date.now()
+                                }))
                                 fetch(`${BACKEND_ADDRESS}/users/${data.token}/updateTotalValue`, {
                                     method: 'PUT',
                                     headers: { 'Content-Type': 'application/json' },

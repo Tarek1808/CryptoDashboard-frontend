@@ -105,3 +105,13 @@
     box-shadow: none; /* Assurez-vous qu'il n'y a pas de shadow indésirable */
 }
 
+.input:focus {
+    border-color: #EC7126; 
+    outline: none; 
+    box-shadow: 0 0 0 2px #EC7126; 
+}
+
+.error{
+    color: rgb(249, 72, 72);
+    
+}

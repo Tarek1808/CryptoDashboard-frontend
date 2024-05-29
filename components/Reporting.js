@@ -46,14 +46,6 @@ function Reporting() {
     lineLabels.push(formattedDatePreviousConnections)
     lineDataset.push(totalValue.value)
   })
-  const date = new Date()
-  const formattedDateThisConnection = date.toLocaleDateString('fr-FR', {
-    day: '2-digit',
-    month: '2-digit',
-    year: 'numeric',
-  });
-  lineLabels.push(formattedDateThisConnection)
-  lineDataset.push(totalValue)
 
   const lineData = {
     labels: lineLabels,

@@ -1,9 +1,48 @@
-import styles from '../styles/Wallets.module.css';
+import styles from '../styles/News.module.css';
 import MenuBar from './MenuBar';
 import Header from './Header';
+import { useEffect, useState } from 'react';
+import Article from './Article';
 
+const BACKEND_ADDRESS = "https://crypto-dashboard-backend-gamma.vercel.app"
 
 function News() {
+  const [newsDataN, setNewsDataN] = useState([]);
+  // console.log(newsDataN);
+
+  useEffect(() => {
+
+    fetch(`${BACKEND_ADDRESS}/news`)
+      .then(response => response.json())
+      .then(dataN => {
+        if (dataN.result) {
+          console.log(dataN.news.results)
+          setNewsDataN(dataN.news.results.slice(0, 5));
+          
+        // let description = dataN.description;
+        //    if (description.length > 200) {
+        //     description = `${description.substring(0, 200)}+ '...`;
+        //    }
+        }
+      },);
+  }, []);
+
+  let news;
+  if (newsDataN && newsDataN.length > 0) {
+    news = newsDataN.map((dataN, i) =>
+    (
+      <Article
+        key={i}
+        image={dataN.image_url}
+        title={dataN.title}
+        description={dataN.description}
+        link={dataN.link} />
+        
+    )
+    )
+  }
+
+
   return (
     <div>
       <div className={styles.header}>
@@ -17,14 +56,15 @@ function News() {
           <h1 className={styles.title}>
             News
           </h1>
+          <div className={styles.cadre}>
+            {news}
+           
+          </div>
           <div className={styles.table}>
-            News API
+
           </div>
         </div>
       </div>
-      <p><a href="http://localhost:3001/">Login</a></p>
-      <p><a href="http://localhost:3001/addWallet">AddWallet</a></p>
-      <p><a href="http://localhost:3001/wallets">Wallets</a></p>
     </div>
   );
 }

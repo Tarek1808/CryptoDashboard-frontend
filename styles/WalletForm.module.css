@@ -7,11 +7,9 @@
     width:50vw;
     padding: 20px;
     box-sizing: border-box;
+    background-color: #ec7126;
     margin-bottom: 1vh;
-    background-color: rgba(224, 224, 211, 0.368);
-    border-radius: 5px;
-    margin: 8px;
-    
+    border-radius: 15px;
   }
   
   .newWalletContainer {
@@ -40,7 +38,8 @@
     padding: 10px 20px;
     cursor: pointer;
     border-radius: 5px;
-    margin-top: auto; /* Empêche le bouton de se coller au haut du formulaire */
-    
+    margin-top: 5px; /* Empêche le bouton de se coller au haut du formulaire */
   }
+  
+  
   
