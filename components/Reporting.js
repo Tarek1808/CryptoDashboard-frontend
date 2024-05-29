@@ -46,6 +46,7 @@ function Reporting() {
     lineLabels.push(formattedDatePreviousConnections)
     lineDataset.push(totalValue.value)
   })
+  //ajout de la total value pour cette connexion
   const date = new Date()
   const formattedDateThisConnection = date.toLocaleDateString('fr-FR', {
     day: '2-digit',

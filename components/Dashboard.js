@@ -23,10 +23,10 @@ function Dashboard() {
 
   useEffect(() => {
     if (user.totalValue && user.totalValue.length > 0) {
-      const lastValue = user.totalValue[user.totalValue.length - 1].value;
+      const lastValue = user.totalValue[user.totalValue.length - 1]?.value;
       setValueLastConnection(lastValue);
 
-      const dateLastConnection = user.totalValue[user.totalValue.length - 1].date;
+      const dateLastConnection = user.totalValue[user.totalValue.length - 1]?.date;
       const date = new Date(dateLastConnection);
       setFormattedDate(date.toLocaleDateString('fr-FR', {
         day: '2-digit',

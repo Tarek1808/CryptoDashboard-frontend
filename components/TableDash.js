@@ -9,7 +9,7 @@ function TableDash() {
     const value = useSelector((state) => state.value.value);
 
     // on map sur cryptoData pour avoir une ligne par crypto et non pas une ligne par wallet
-    const tableData = value.cryptoData.map((crypto, index) => {
+    const tableData = value.cryptoData?.map((crypto, index) => {
         const { name, quantity, price, value } = crypto
         return (
             <tr key={index}>
