@@ -19,20 +19,20 @@
     justify-content: center;
     gap: 10px;
     width: 40vw;
-    margin-bottom: 20px; /* Spacing entre le champ d'adresse et le bouton "+" */
+    margin-bottom: 1.4rem; /* Spacing entre le champ d'adresse et le bouton "+" */
   }
   
   .addButton {
-    background-color: #007bff;
+    background-color: #EC7126;
     color: white;
     border: none;
     padding: 5px 10px;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 5px
   }
   
   .submitBtn {
-    background-color: #007bff;
+    background-color: #EC7126;
     color: white;
     border: none;
     padding: 10px 20px;

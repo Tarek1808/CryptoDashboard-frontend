@@ -14,7 +14,9 @@ function WalletForm() {
     const [styleBox, setStyleBox] = useState({});
     // const [newAddressIndex, setNewAddressIndex] = useState(0);
     const user = useSelector((state) => state.user.value)
-    // console.log("user:", user.data)
+    
+    //console.log("user:", user.data)
+    
 
     const handleCryptoChange = (event) => {
         setSelectedCrypto(event.target.value);

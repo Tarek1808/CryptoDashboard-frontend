@@ -4,17 +4,15 @@ import Header from './Header';
 import { useEffect, useState } from 'react';
 import Article from './Article';
 
-
+const BACKEND_ADDRESS = "https://crypto-dashboard-backend-gamma.vercel.app"
 
 function News() {
   const [newsDataN, setNewsDataN] = useState([]);
-  console.log(newsDataN);
-
-  //
+  // console.log(newsDataN);
 
   useEffect(() => {
 
-    fetch('http://localhost:3000/news')
+    fetch(`${BACKEND_ADDRESS}/news`)
       .then(response => response.json())
       .then(dataN => {
         if (dataN.result) {
