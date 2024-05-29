@@ -5,8 +5,8 @@ import MenuBar from './MenuBar';
 import Header from './Header';
 import { updateEmail } from '../reducers/user';
 
-// const BACKEND_ADDRESS = "https://crypto-dashboard-backend-gamma.vercel.app"
-const BACKEND_ADDRESS = "http://localhost:3000"
+const BACKEND_ADDRESS = "https://crypto-dashboard-backend-gamma.vercel.app"
+// const BACKEND_ADDRESS = "http://localhost:3000"
 
 function AccountInfos() {
   const dispatch = useDispatch();
