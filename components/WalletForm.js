@@ -12,10 +12,10 @@ function WalletForm() {
     const [selectedCrypto, setSelectedCrypto] = useState('');
     const [newWallet, setNewWallet] = useState([]);
     const [styleBox, setStyleBox] = useState({});
-    const [newAddressIndex, setNewAddressIndex] = useState(0);
+    // const [newAddressIndex, setNewAddressIndex] = useState(0);
     const user = useSelector((state) => state.user.value)
-    const token = user.data.token
-    console.log("user:", user.data)
+    
+    //console.log("user:", user.data)
     
 
     const handleCryptoChange = (event) => {
