@@ -7,6 +7,7 @@ import { login } from '../reducers/user';
 import { useRouter } from 'next/router';
 import { updateData, updateTotalValue } from '../reducers/value';
 import { loadWallets } from '../reducers/wallets.js';
+import { pushTotalValue } from '../reducers/user';
 
 const BACKEND_ADDRESS = "https://crypto-dashboard-backend-gamma.vercel.app"
 
@@ -101,6 +102,10 @@ function Login() {
                                 })
                                 console.log("total value:", totalValue)
                                 dispatch(updateTotalValue(totalValue))
+                                dispatch(pushTotalValue({
+                                    value:totalValue,
+                                    date: Date.now()
+                                }))
                                 fetch(`${BACKEND_ADDRESS}/users/${data.token}/updateTotalValue`, {
                                     method: 'PUT',
                                     headers: { 'Content-Type': 'application/json' },

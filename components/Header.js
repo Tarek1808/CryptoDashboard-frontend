@@ -25,7 +25,7 @@ function Header() {
             <h3 className={styles.setting}>Settings</h3>
             <div className={styles.gear}>
 
-                <p>Account Info</p>
+                <p onClick={()=> router.push('/accountInfos')}>Account Informations</p>
                 <span>Dark Mode     <Switch
                     defaultChecked
                     style={{ backgroundColor: '#EC7126' }}
