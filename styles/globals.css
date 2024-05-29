@@ -6,7 +6,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   height: 100vh;
-  background: url('../components/images/background.jpg') no-repeat center center fixed;
+  background: url('/images/background.jpg') no-repeat center center fixed;
   background-size: cover;
 }
 
@@ -14,10 +14,10 @@ body {
   box-sizing: border-box;
 }
 
-html, body, #__next {
+/* html, body, #__next {
   height: 100%;
   width: 100%;
-}
+} */
 
 .container {
   flex: 1;

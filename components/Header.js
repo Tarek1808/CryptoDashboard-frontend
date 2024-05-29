@@ -6,8 +6,8 @@ import { logout } from '../reducers/user';
 import styles from '../styles/Header.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGear } from '@fortawesome/free-solid-svg-icons';
-import { Popover, Switch } from 'antd';
-import logo from './images/logo.png';
+import { Button, Popover, Switch } from 'antd';
+import logo from '../public/images/logo.png';
 
 function Header() {
     const router = useRouter()
@@ -60,21 +60,12 @@ function Header() {
                     <Popover
                         content={popoverContent}
                         trigger='click'>
-                        <FontAwesomeIcon
+                            <Button>Settings</Button>
+                        {/* <FontAwesomeIcon
                             icon={faGear}
-                            size='xl' />
+                            size='xl' /> */}
                     </Popover>
                 </span>
-                <span><Popover
-                    
-                    content={popoverContent}
-
-                    trigger='click'>
-                    <FontAwesomeIcon
-                        icon={faGear}
-                        // spin
-                        size='xl' />
-                </Popover></span>
                 <button className={styles.button} onClick={handleLogout}>Logout</button>
             </div>
         </div>
