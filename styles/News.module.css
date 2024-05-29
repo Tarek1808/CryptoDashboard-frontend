@@ -1,0 +1,42 @@
+.cadre{
+    width: 500px;
+    height: 700px;
+    display: contents;
+  }
+
+/* Styles for the overall content layout */
+.content {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px;
+  }
+  
+.description{
+    margin-left: 5px;
+}
+  
+  .rightContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+  }
+  
+  .title {
+    display: flex;
+    font-size: 3rem;
+  }
+  
+  .image{
+    display: flex;
+    justify-content: center;
+  }
+
+
+
+  
+  

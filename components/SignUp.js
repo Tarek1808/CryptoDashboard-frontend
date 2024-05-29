@@ -4,6 +4,10 @@ import { useDispatch } from 'react-redux';
 import { login } from '../reducers/user';
 import { useRouter } from 'next/router';
 
+
+const EMAIL_REGEX =
+  /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
 function SignUp() {
     const dispatch = useDispatch()
     const router = useRouter();
@@ -11,8 +15,12 @@ function SignUp() {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    
+ 
+
 
     const handleSubmit = () => {
+        if (EMAIL_REGEX.test(email)){
         fetch('http://localhost:3000/users/signup', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -30,6 +38,12 @@ function SignUp() {
                     console.log("erreur sign up")
                 }
             });
+            
+                // res.json({ result:false, error: 'Invalid email adress'});
+                // return;
+              }
+              else console.log('error total') 
+              
     };
 
     return (

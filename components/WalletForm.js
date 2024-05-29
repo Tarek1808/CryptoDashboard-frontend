@@ -3,21 +3,17 @@ import styles from '../styles/WalletForm.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { addWallet, loadWallets } from '../reducers/wallets';
 
-
 function WalletForm() {
 
     const dispatch = useDispatch()
     const [selectedCrypto, setSelectedCrypto] = useState('');
     const [newWallet, setNewWallet] = useState([]);
-
-
     const [refreshWallets, setRefreshWallets] = useState(false)
-
     const [styleBox, setStyleBox] = useState({});
     // const [newAddressIndex, setNewAddressIndex] = useState(0);
     const user = useSelector((state) => state.user.value)
     const token = user.data.token
-    console.log("user:", user.data)
+    // console.log("user:", user.data)
 
     useEffect(() => {
         if (user.data) {
@@ -33,22 +29,18 @@ function WalletForm() {
     const handleCryptoChange = (event) => {
         setSelectedCrypto(event.target.value);
         if (event.target.value !== '') {
-
             setNewWallet([{ address: '', nameWallet: '', user: user.data.token }]);
             if (event.target.value === "Ethereum") {
                 setStyleBox({ backgroundColor: 'rgb(74, 94, 196)' });
-
-        } else if (event.target.value === "Solana") {
-            setStyleBox({ backgroundColor: 'rgb(71, 172, 186)'});
-        } else if (event.target.value === "Bitcoin") {
-            setStyleBox({ backgroundColor: '#FF9900'})
-
-
-        }
-        else {
+            } else if (event.target.value === "Solana") {
+                setStyleBox({ backgroundImage: 'linear-gradient(to bottom left,#13ebe7 , #2478bd, #D63CFA )' });
+            } else if (event.target.value === "Bitcoin") {
+                setStyleBox({ backgroundColor: '#FF9900' })
+            }
+        } else {
             setNewWallet([]);
             setStyleBox({ backgroundColor: '#ec7126'})
-        }}
+        }
     };
 
     const handleAddAddressClick = (event) => {
@@ -76,9 +68,9 @@ function WalletForm() {
                             method: 'PUT',
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify({ address }),
-            }).then(response => response.json())
-                .then(data => {
-                    if (data.result) {
+                        }).then(response => response.json())
+                            .then(data => {
+                                if (data.result) {
                                     console.log("fetch add wallet route put")
                                     dispatch(addWallet({ nameWallet, address, blockchain: selectedCrypto }))
                                     setRefreshWallets(!refreshWallets)
@@ -99,9 +91,9 @@ function WalletForm() {
             {/* <label htmlFor="crypto-choice">Choisissez votre crypto-monnaie :</label> */}
             <select id="crypto-choice" name="crypto-choice" value={selectedCrypto} onChange={handleCryptoChange}>
                 <option value="">Add Blockchain</option>
-                <option className={styles.Sola} value="Solana">Solana</option>
-                <option className={styles.Bitc} value="Bitcoin">Bitcoin</option>
-                <option className={styles.Ethe} value="Ethereum">Ethereum</option>
+                <option value="Solana">Solana</option>
+                <option value="Bitcoin">Bitcoin</option>
+                <option value="Ethereum">Ethereum</option>
             </select>
 
             {newWallet.map((wallet, index) => (

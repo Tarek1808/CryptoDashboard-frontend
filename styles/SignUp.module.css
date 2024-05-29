@@ -77,3 +77,8 @@
     outline: none; 
     box-shadow: 0 0 0 2px #EC7126; 
 }
+
+.error{
+    color: rgb(249, 72, 72);
+    
+}

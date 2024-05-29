@@ -1,4 +1,4 @@
-import styles from '../styles/Wallets.module.css';
+import styles from '../styles/News.module.css';
 import MenuBar from './MenuBar';
 import Header from './Header';
 import { useEffect, useState } from 'react';
@@ -7,39 +7,42 @@ import Article from './Article';
 
 
 function News() {
-  const [newsData, setNewsData] = useState([]);
- console.log(newsData);
-  
-//
+  const [newsDataN, setNewsDataN] = useState([]);
+  console.log(newsDataN);
+
+  //
 
   useEffect(() => {
-    
-    fetch('http://localhost:3000/news')
-      .then (response => response.json())
-      .then (data => {
-        if (data.result) {
-          console.log(data.news.results)
-           setNewsData(data.news.results.slice[0, 3])
-          
-          
-          //  if (description.lenght > 200) {
-          //   description = description.substring(0, 200) + '...';
-          //  }
-        }
-      }, );
-  },[]);
 
-let news;
-  if (newsData && newsData.length > 0) {
-  news = newsData.map((data) => 
-     (
+    fetch('http://localhost:3000/news')
+      .then(response => response.json())
+      .then(dataN => {
+        if (dataN.result) {
+          console.log(dataN.news.results)
+          setNewsDataN(dataN.news.results.slice(0, 5));
+          
+        // let description = dataN.description;
+        //    if (description.length > 200) {
+        //     description = `${description.substring(0, 200)}+ '...`;
+        //    }
+        }
+      },);
+  }, []);
+
+  let news;
+  if (newsDataN && newsDataN.length > 0) {
+    news = newsDataN.map((dataN, i) =>
+    (
       <Article
-        image={data.image_url}
-        title={data.title}
-        description={data.description}
-        link={data.link} />
+        key={i}
+        image={dataN.image_url}
+        title={dataN.title}
+        description={dataN.description}
+        link={dataN.link} />
+        
     )
-  )}
+    )
+  }
 
 
   return (
@@ -64,9 +67,6 @@ let news;
           </div>
         </div>
       </div>
-      <p><a href="http://localhost:3001/">Login</a></p>
-      <p><a href="http://localhost:3001/addWallet">AddWallet</a></p>
-      <p><a href="http://localhost:3001/wallets">Wallets</a></p>
     </div>
   );
 }

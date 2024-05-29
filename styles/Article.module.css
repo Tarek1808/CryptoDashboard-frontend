@@ -1,14 +1,50 @@
 .articles {
-    width: 400px;
-    height: 400px;
-    margin: 10px;
+    width: 70vw;
+    height: 13vw;
+    margin: 0.5vw 0vw;
+    
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    border: 1px #EC7126 solid;
+    border-radius: 15px;
+  }
+
+  .imageCase{
+    width: 115px;
+    height: 115px;
+  
   }
   
   .divider {
-    width: 100%;
-    height: 1px;
+    height: 80%;
+    width: 1px;
     background-color: rgb(233, 190, 89);
     margin: 15px 0px 15px 0px
+  }
+
+  .case{
+    width: fit-content;
+    height: fit-content;
+    display: flex ;
+    justify-content: center;
+    margin: 5px;
+  }
+
+  .title{
+    display: flex;
+   
+    padding: auto;
+    margin-left: 10px;
+  }
+
+  .text{
+    padding: 1.3vw;
+    display: flex;
+    flex-direction: column;
+
+  }
+
+  .link{
+    font-size: 10px;
   }
