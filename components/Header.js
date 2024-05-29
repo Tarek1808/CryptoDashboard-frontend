@@ -56,17 +56,8 @@ function Header() {
 
             </div>
             <div className={styles.droite}>
-                <span>
-                    <Popover
-                        content={popoverContent}
-                        trigger='click'>
-                        <FontAwesomeIcon
-                            icon={faGear}
-                            size='xl' />
-                    </Popover>
-                </span>
+                
                 <span><Popover
-                    
                     content={popoverContent}
 
                     trigger='click'>
