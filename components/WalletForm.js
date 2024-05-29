@@ -10,10 +10,10 @@ function WalletForm() {
     const [newWallet, setNewWallet] = useState([]);
     const [refreshWallets, setRefreshWallets] = useState(false)
     const [styleBox, setStyleBox] = useState({});
-    // const [newAddressIndex, setNewAddressIndex] = useState(0);
+    const [newAddressIndex, setNewAddressIndex] = useState(0);
     const user = useSelector((state) => state.user.value)
     const token = user.data.token
-    // console.log("user:", user.data)
+    console.log("user:", user.data)
 
     useEffect(() => {
         if (user.data) {
