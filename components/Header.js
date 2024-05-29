@@ -16,7 +16,7 @@ function Header() {
     console.log("user depuis header", user)
 
     useEffect(() => {
-        if (!user.data.token) {
+        if (!user.token) {
             router.push('/')
         }
     }, [user])
@@ -38,7 +38,7 @@ function Header() {
                         defaultChecked
                         // onChange={onChange}
                         style={{ backgroundColor: '#EC7126' }}
-                        arial-readonly />  $
+                        aria-readonly />  $
                 </span>
             </div></div>
     );

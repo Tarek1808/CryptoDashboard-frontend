@@ -677,6 +677,11 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
+"@kurkle/color@^0.3.0":
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/@kurkle/color/-/color-0.3.2.tgz#5acd38242e8bde4f9986e7913c8fdf49d3aa199f"
+  integrity sha512-fuscdXJ9G1qb7W8VdHi+IwRqij3lBkosAm4ydQtEmbY58OzHXqQhvlxqEkoz0yssNVn38bcpRWgA9PP+OGoisw==
+
 "@next/env@12.3.4":
   version "12.3.4"
   resolved "https://registry.yarnpkg.com/@next/env/-/env-12.3.4.tgz#c787837d36fcad75d72ff8df6b57482027d64a47"
@@ -1405,6 +1410,13 @@ char-regex@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/char-regex/-/char-regex-1.0.2.tgz#d744358226217f981ed58f479b1d6bcc29545dcf"
   integrity sha512-kWWXztvZ5SBQV+eRgKFeh8q5sLuZY2+8WUIzlxWVTg+oGwY14qylx1KbKzHd8P6ZYkAg0xyIDU9JMHhyJMZ1jw==
+
+chart.js@^4.4.3:
+  version "4.4.3"
+  resolved "https://registry.yarnpkg.com/chart.js/-/chart.js-4.4.3.tgz#3b2e11e7010fefa99b07d0349236f5098e5226ad"
+  integrity sha512-qK1gkGSRYcJzqrrzdR6a+I0vQ4/R+SoODXyAjscQ/4mzuNzySaMCd+hyVxitSY1+L2fjPD1Gbn+ibNqRmwQeLw==
+  dependencies:
+    "@kurkle/color" "^0.3.0"
 
 ci-info@^3.2.0:
   version "3.9.0"
@@ -3455,6 +3467,11 @@ rc-virtual-list@^3.11.1, rc-virtual-list@^3.5.1, rc-virtual-list@^3.5.2:
     classnames "^2.2.6"
     rc-resize-observer "^1.0.0"
     rc-util "^5.36.0"
+
+react-chartjs-2@^5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/react-chartjs-2/-/react-chartjs-2-5.2.0.tgz#43c1e3549071c00a1a083ecbd26c1ad34d385f5d"
+  integrity sha512-98iN5aguJyVSxp5U3CblRLH67J8gkfyGNbiK3c+l1QI/G4irHMPQw44aEPmjVag+YKTyQ260NcF82GTQ3bdscA==
 
 react-dom@18.1.0:
   version "18.1.0"

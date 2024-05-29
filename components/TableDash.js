@@ -3,23 +3,22 @@ import { useSelector } from 'react-redux';
 import styles from '../styles/TableWallets.module.css';
 
 function TableDash() {
-    
     const wallets = useSelector((state) => state.wallets.value);
     console.log("wallets", wallets)
 
-    const tableData = wallets.map((item, index) => {
-        if (item.holdings.length > 0) {
-            const { crypto, quantity } = item.holdings[0]
-            const value = (quantity*crypto.price).toFixed(2)
-            return (
-                <tr key={index}>
-                    <td>{crypto.name}</td>
-                    <td>{quantity}</td>
-                    <td>{crypto.price}</td>
-                    <td>{value}</td>
-                </tr>
-            )
-        } else return
+    const value = useSelector((state) => state.value.value);
+
+    // on map sur cryptoData pour avoir une ligne par crypto et non pas une ligne par wallet
+    const tableData = value.cryptoData.map((crypto, index) => {
+        const { name, quantity, price, value } = crypto
+        return (
+            <tr key={index}>
+                <td>{name}</td>
+                <td>{quantity.toFixed(6)}</td>
+                <td>{price.toFixed(2)}</td>
+                <td>{value.toFixed(2)}</td>
+            </tr>
+        )
     });
 
     return (

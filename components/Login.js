@@ -7,6 +7,10 @@ import { login } from '../reducers/user';
 import { useRouter } from 'next/router';
 import backgroundImage from './images/background.jpg';
 import logo from './images/logo.png';
+import { updateData, updateTotalValue } from '../reducers/value';
+import { loadWallets } from '../reducers/wallets.js';
+
+const BACKEND_ADDRESS = "https://crypto-dashboard-backend-gamma.vercel.app"
 
 function Login() {
     const dispatch = useDispatch();
@@ -27,7 +31,7 @@ function Login() {
 
     const handleSignIn = () => {
         if (username !== '' && password !== '') {
-            fetch('http://localhost:3000/users/signin', {
+            fetch(`${BACKEND_ADDRESS}/users/signin`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ username, password }),
@@ -35,9 +39,80 @@ function Login() {
                 .then(data => {
                     if (data.result) {
                         console.log("utilisateur connecté via sign in:", data)
-                        data.result && dispatch(login({ data }));
+                        const { token, username, email, wallets, totalValue } = data
+                        dispatch(login({ token, username, email, wallets, totalValue }));
                         setPassword('')
                         setUsername('')
+                        fetch(`${BACKEND_ADDRESS}/cryptos/price`, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                        }).then(response => response.json())
+                            .then(data => {
+                                if (data.result) {
+                                    console.log("prices updated")
+                                }
+                            })
+                        fetch(`${BACKEND_ADDRESS}/cryptos/contentWallet/${data.token}`, {
+                            method: 'PUT',
+                            headers: { 'Content-Type': 'application/json' },
+                        }).then(response => response.json())
+                            .then(data => {
+                                if (data.result) {
+                                    console.log("wallet content updated")
+                                }
+                            })
+                        fetch(`${BACKEND_ADDRESS}/wallet/${data.token}`)
+                            .then(response => response.json())
+                            .then(dataWallets => {
+                                console.log("data fetch get wallet dashboard", dataWallets)
+                                const wallets = dataWallets.listWallets
+                                dispatch(loadWallets(wallets));
+
+                                if (wallets.length < 0) return
+
+                                const cryptoMap = {};
+                                // on boucle sur chaque adresse et on prend la 1ère ligne (on a qu'une crypto par wallet)
+                                // si la crypto est déjà dans le tableau cryptoData, on ajoute la quantité et la value aux valeurs existantes
+                                // si la crypto n'est pas dans cryptoData, on créé un nouvel élément dans le tableau et on initialise la quantité et value à 0
+                                wallets.forEach(wallet => {
+                                    if (wallet.holdings.length < 0) return
+
+                                    const { crypto, quantity } = wallet.holdings[0];
+                                    if (!cryptoMap[crypto.name]) {
+                                        cryptoMap[crypto.name] = {
+                                            name: crypto.name,
+                                            price: Number(crypto.price),
+                                            quantity: 0,
+                                            value: 0
+                                        };
+                                    }
+                                    cryptoMap[crypto.name].quantity += quantity;
+                                    cryptoMap[crypto.name].value += quantity * crypto.price;
+                                });
+                                console.log("cryptomap:", cryptoMap)
+                                // conversion en tableau car plus facilement exploitable
+                                const aggregatedData = Object.values(cryptoMap);
+                                dispatch(updateData(aggregatedData));
+
+                                // on boucle sur le tableau aggregatedData pour calculer la value total des wallets et envoyer la valeur au reducer afin de l'afficher
+                                // on envoie également le nom et la quantité de chaque crypto pour avoir des données pour le graphe camembert de la page reporting
+                                let totalValue = 0
+                                aggregatedData.forEach(crypto => {
+                                    totalValue += crypto.value
+                                })
+                                console.log("total value:", totalValue)
+                                dispatch(updateTotalValue(totalValue))
+                                fetch(`${BACKEND_ADDRESS}/users/${data.token}/updateTotalValue`, {
+                                    method: 'PUT',
+                                    headers: { 'Content-Type': 'application/json' },
+                                    body: JSON.stringify({ totalValue }),
+                                }).then(response => response.json())
+                                    .then(data => {
+                                        if (data.result) {
+                                            console.log("wallet content updated")
+                                        }
+                                    })
+                            });
                         router.push('/addWallet')
                     } else {
                         console.log("erreur sign in")
