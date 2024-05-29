@@ -74,7 +74,7 @@ function Login() {
                                 // si la crypto est déjà dans le tableau cryptoData, on ajoute la quantité et la value aux valeurs existantes
                                 // si la crypto n'est pas dans cryptoData, on créé un nouvel élément dans le tableau et on initialise la quantité et value à 0
                                 wallets.forEach(wallet => {
-                                    if (wallet.holdings.length < 0) return
+                                    if (wallet.holdings.length === 0) return
 
                                     const { crypto, quantity } = wallet.holdings[0];
                                     if (!cryptoMap[crypto.name]) {
