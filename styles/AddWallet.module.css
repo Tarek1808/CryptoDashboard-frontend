@@ -42,3 +42,11 @@
   font-size: 3rem;
   color: white;
 }
+
+.buttonplus{
+  color: white;
+    background-color: #EC7126;
+    padding:6px 10px;
+    border-radius: 4px;
+    border: 0px;
+}

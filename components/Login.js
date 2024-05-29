@@ -5,8 +5,8 @@ import SignUp from './SignUp.js';
 import { useDispatch } from 'react-redux';
 import { login } from '../reducers/user';
 import { useRouter } from 'next/router';
-import backgroundImage from './images/background.jpg';
-import logo from './images/logo.png';
+// import backgroundImage from './images/background.jpg';
+// import logo from './images/logo.png';
 import { updateData, updateTotalValue } from '../reducers/value';
 import { loadWallets } from '../reducers/wallets.js';
 import { pushTotalValue } from '../reducers/user';
@@ -127,9 +127,9 @@ function Login() {
     }
 
     return (
-        <div className={styles.container} style={{ backgroundImage: `url(${backgroundImage.src})` }}>
+        <div className={styles.container} >
             <div className={styles.logo}>
-                <img src={logo.src} alt="Logo" />
+                {/* <img src={logo.src} alt="Logo" /> */}
             </div>
             <div className={styles.overlay}>
                 <div className={styles.content}>
