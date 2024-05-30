@@ -12,6 +12,7 @@ const nextConfig = {
       "i.f1g.fr",
       "images.laprovence.com",
       "media.sudouest.fr",
+      "fyooyzbm.filerobot.com",
     ],
   },
 };
