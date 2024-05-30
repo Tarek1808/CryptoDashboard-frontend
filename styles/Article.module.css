@@ -11,9 +11,10 @@
   }
 
   .imageCase{
-    width: 115px;
-    height: 115px;
-  
+    width: 10vw;
+    height: 18vh;
+    display:flex;
+    justify-content: center;
   }
   
   .divider {
@@ -33,7 +34,7 @@
 
   .title{
     display: flex;
-   
+    text-decoration: underline;
     padding: auto;
     margin-left: 10px;
   }
@@ -42,9 +43,15 @@
     padding: 1.3vw;
     display: flex;
     flex-direction: column;
-
+    color: white;
+    font-family: 'Inter' , sans-serif;
   }
 
   .link{
     font-size: 10px;
+    color: white;
+    
+  }
+  .link:visited {
+    color:grey;
   }

@@ -17,7 +17,7 @@ function News() {
       .then(dataN => {
         if (dataN.result) {
           console.log(dataN.news.results)
-          setNewsDataN(dataN.news.results.slice(0, 5));
+          setNewsDataN(dataN.news.results.slice(0, 4));
           
         // let description = dataN.description;
         //    if (description.length > 200) {

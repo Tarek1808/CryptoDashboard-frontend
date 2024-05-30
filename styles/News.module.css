@@ -29,6 +29,7 @@
   .title {
     display: flex;
     font-size: 3rem;
+    color:white;
   }
   
   .image{

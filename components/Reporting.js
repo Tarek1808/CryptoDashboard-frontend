@@ -4,6 +4,8 @@ import Header from "./Header";
 import { Line, Pie } from "react-chartjs-2";
 import { useSelector } from "react-redux";
 import "chart.js/auto";
+import { Legend, plugins } from 'chart.js/auto';
+import { color } from 'chart.js/helpers';
 
 function Reporting() {
   const user = useSelector((state) => state.user.value);
@@ -32,6 +34,13 @@ function Reporting() {
       },
     ],
   };
+  const pieOptions = {
+    plugins:{
+      Legend:{
+        labels:{color:'white'}
+      }
+    }
+  };
 
   const lineLabels = [];
   const lineDataset = [];
@@ -59,6 +68,12 @@ function Reporting() {
       },
     ],
   };
+  // const lineOptionsy = {
+  //   scales:{
+  //     y:{
+  //       ticks:{color:'white'}
+  //     }},    
+  // };
 
   return (
     <div>
@@ -72,8 +87,8 @@ function Reporting() {
         <div className={styles.rightContent}>
           <h1 className={styles.title}>Reporting</h1>
           <div className={styles.charts}>
-            <Pie className={styles.pie} data={pieData} />
-            <Line className={styles.line} data={lineData} />
+            < Pie className={styles.pie} data={pieData} />
+            < Line className={styles.line} data={lineData} />
           </div>
         </div>
       </div>

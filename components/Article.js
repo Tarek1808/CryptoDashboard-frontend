@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 function Article(props) {
     console.log(props);
-        const MAX_DESCRIPTION_LENGTH = 150;
+        const MAX_DESCRIPTION_LENGTH = 200;
 
         let description = props.description || '';
            if (description.length > MAX_DESCRIPTION_LENGTH) {
@@ -25,9 +25,9 @@ function Article(props) {
             {/* <h4 style={{ textAlign: "right" }}>- </h4> */}
             <div className={styles.divider}></div>
             <div className={styles.text}>
-                <h3>{props.title}</h3>
+                <h3 className={styles.title}>{props.title}</h3>
                 <p className={styles.description}>{description}</p>
-                <p className={styles.link}>source:{props.link}</p>
+                <a className={styles.link} href={props.link} target="_blank">source:{props.link} </a>
             </div>
         </div>
     );
