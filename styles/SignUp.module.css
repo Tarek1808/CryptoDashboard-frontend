@@ -35,7 +35,6 @@
     background-image: url('../public/images/background.jpg');
     background-size: cover;
     background-position: center;
-    opacity: 0.80; /* Opacité de l'image de fond */
     z-index: -1; /* Assurer que l'image de fond est en arrière-plan */
 }
 
