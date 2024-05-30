@@ -41,8 +41,8 @@
   }
 
   .menubar {
-    position:absolute;
-    top:20vh;
+    position:sticky;
+    top:0vh;
     left: 2vw;
   }
 
