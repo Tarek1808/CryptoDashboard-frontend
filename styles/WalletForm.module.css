@@ -7,7 +7,7 @@
     width:50vw;
     padding: 20px;
     box-sizing: border-box;
-    background-color: #ec7126;
+    background-color: rgba(149, 145, 145, 0.096);
     margin-bottom: 1vh;
     border-radius: 15px;
   }
@@ -41,5 +41,18 @@
     margin-top: 5px; /* Empêche le bouton de se coller au haut du formulaire */
   }
   
+  .submitBtn:focus {
+    animation-name: rotate;
+    animation-duration: 3s;
+    animation-delay: 1s;
+  }
   
+  @keyframes rotate {
+    0% {
+      transform: rotate(0);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
   
