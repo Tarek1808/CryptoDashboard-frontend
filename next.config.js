@@ -9,7 +9,10 @@ const nextConfig = {
     'www.broker-forex.fr',
     'cdn.zonebourse.com', 
     'media.lesechos.com',
-    'i.f1g.fr'], 
+    'i.f1g.fr',
+    "images.laprovence.com",
+    "media.sudouest.fr",
+  ], 
   },
 };
 
