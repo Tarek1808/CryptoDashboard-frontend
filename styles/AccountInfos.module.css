@@ -32,7 +32,8 @@
 }
 
 .accountInfoContainer { 
-  width: 350px; padding: 50px; 
+  width: 300px; 
+  padding: 50px; 
   background-color: rgba(149, 145, 145, 0.096);
   color: white;
   border-radius: 5%; 
