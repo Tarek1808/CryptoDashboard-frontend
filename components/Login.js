@@ -127,7 +127,7 @@ function Login() {
                     }
                   });
               });
-            router.push("/addWallet");
+            router.push("/dashboard");
           } else {
             setErrorId(true);
             console.log("erreur sign in");
