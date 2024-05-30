@@ -14,12 +14,12 @@
 
 .logo {
   position: absolute;
-  top: 20px;
-  left: 20px;
+  top: 10px;
+  left: 10px;
 }
 
 .logo img {
-  max-width: 500px;
+  max-width: 20vw;
   background-color: transparent;
 }
 
@@ -33,32 +33,39 @@
 
 .content {
   display: flex;
-  flex-direction: row; /* Aligner les éléments côte à côte */
+  flex-direction: row; 
   justify-content: center;
   align-items: center;
   color: #fff;
-  width: 100%;
-  gap: 3.5rem; /* Ajouter un espacement entre les éléments */
+  width: 70vw;
+  height: 50vh;
+  gap: 2rem; 
 }
 
 .auth {
-  background-color: rgba(255, 255, 255, 0.067);
-  padding: 4rem; /* Ajuster le padding */
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.036);
+  padding: 3rem; 
   border-radius: 8px;
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px); 
   width: 100%;
-  max-width: 500px;
-  margin-right: 15rem;
+  max-width: 24vw;
+  align-items: center;
+  /* margin-right: 15rem; */
 }
 
 .inputContainer {
-  margin-bottom: 1.5rem;
+  /* margin-bottom: 1.5rem; */
+  padding: auto;
+  width: 100%;
 }
 
 .labelCaption {
   display: block;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
   margin-bottom: 0.5rem;
 }
 
@@ -67,13 +74,15 @@
   padding: 0.75rem;
   border-radius: 4px;
   border: none;
-  background-color: rgba(255, 255, 255, 0.743);
+  background-color: rgba(255, 255, 255, 0.85);
   color: black;
-  font-size: 1.5rem;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .button {
-  width: 100%;
+  width: 50%;
   padding: 0.75rem;
   border-radius: 8px;
   border: none;
@@ -81,7 +90,8 @@
   color: #fff;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  font-size: 1.9rem;
+  font-size: 1.3rem;
+  margin: 1rem;
 }
 
 .button:hover {
@@ -89,7 +99,9 @@
 }
 
 .separator {
-  margin: 1.5rem 0;
+  display: flex;
+  width:100%;
+  /* margin: 1.5rem 0; */
   border: none;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
@@ -103,18 +115,32 @@
   }
 }
 
-.titlepresntation {
-  font-size: 3rem;
+.titlePresentation {
+  font-size: 2.7rem;
   margin-bottom: 1rem;
   text-align: left;
-  padding-left: 22rem;
+  /* padding-left: 10rem; */
 }
 
-.paragraphpresntation {
-  font-size: 1.7rem;
-  margin-bottom: 2rem;
+.paragraphPresentation {
+  font-size: 1.4rem;
+  margin-bottom: 0rem;
   text-align: left;
-  padding-left: 15rem;
-  word-spacing: 0.3rem;
+  /* padding-left: 10rem; */
+  /* word-spacing: 0.2rem; */
   line-height: 2.8rem;
+}
+
+.presentation {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.error{
+  color: rgb(249, 72, 72);
+}
+
+.betweenParagraphs {
+  height:20px;
 }
