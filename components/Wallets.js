@@ -1,7 +1,7 @@
-import styles from '../styles/Wallets.module.css';
-import MenuBar from './MenuBar';
-import Header from './Header';
-import TableWallets from './TableWallets';
+import styles from "../styles/Wallets.module.css";
+import MenuBar from "./MenuBar";
+import Header from "./Header";
+import TableWallets from "./TableWallets";
 
 function Wallets() {
   return (
@@ -14,9 +14,7 @@ function Wallets() {
           <MenuBar />
         </div>
         <div className={styles.rightContent}>
-          <h1 className={styles.title}>
-            Wallets
-          </h1>
+          <h1 className={styles.title}>Wallets</h1>
           <div className={styles.table}>
             <TableWallets />
           </div>

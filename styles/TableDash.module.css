@@ -19,7 +19,7 @@
 .table th,
 .table td {
   padding: 12px;
-  
+  width: 25vw;
   border: 1px solid #ddd;
 }
 
@@ -49,8 +49,4 @@
 
 .deleteButton:hover {
   background-color: #ff704d;
-}
-
-.smallColumn {
-  width: 10vw;
 }
