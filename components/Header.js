@@ -3,10 +3,10 @@ import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearWallets } from '../reducers/wallets';
 import { logout } from '../reducers/user';
+import { ConfigProvider,Button, Popover, Switch } from 'antd';
+import logo from '../public/images/logo.png';
 import styles from '../styles/Header.module.css';
 
-import { ConfigProvider, Popover, Switch } from 'antd';
-import logo from '../public/images/logo.png';
 
 function Header() {
     const router = useRouter()
@@ -65,7 +65,7 @@ function Header() {
 
                             content={popoverContent}
                             trigger='click'>
-                            <button className={styles.button}>Settings</button>
+                            <button className={styles.buttonS}>Settings</button>
                             {/* <FontAwesomeIcon
                             icon={faGear}
                             size='xl' /> */}

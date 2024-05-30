@@ -10,10 +10,11 @@
   width: 100%;
   z-index: 1000;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  height:13vh;
 }
 
 .logo {
-  width: 300px;
+  width: 16vw;
   /* Taille du logo */
   height: auto;
   /* Ajuster la hauteur en conséquence */
@@ -49,12 +50,29 @@
   border-radius: 5px;
   cursor: pointer;
   font-family: 'Inter', sans-serif;
-  font-size: 1.2rem;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.buttonS {
+  margin: 0px 10px;
+  padding: 8px 10px;
+  background-color:whitesmoke;
+  color: #EC7126;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
   font-weight: bold;
 }
 
 .button:hover {
   background-color: #FFA76E;
+}
+
+.buttonS:hover {
+  color:rgba(0, 17, 55)
 }
 
 .gear {
