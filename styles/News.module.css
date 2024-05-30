@@ -24,9 +24,9 @@
   align-items: center;
   height: 100vh;
   width: 80vw;
-  position: relative;
+  position: absolute;
   top:13vh;
-  left:17vw;
+  left: 20vw;
 }
 
   .title {
@@ -42,6 +42,7 @@
 
   .menubar {
     position:absolute;
+    width:18vw;
     top:20vh;
     left: 2vw;
   }
