@@ -28,12 +28,13 @@
   color: #141211;
   text-align: center;
   margin-bottom: 20px;
+  color:white;
 }
 
 .accountInfoContainer { 
   width: 350px; padding: 50px; 
-  background-color: #ffffff; 
-  border: 3px solid #EC7126;
+  background-color: rgba(149, 145, 145, 0.096);
+  color: white;
   border-radius: 5%; 
   text-align: center; 
   position: absolute; 

@@ -47,10 +47,10 @@ function AccountInfos() {
           <p>Username : {username}</p>
         </div>
         <div className={styles.inputContainer}>
-          <label className={styles.labelCaption} htmlFor="email">  </label>
+          
           <input type="email" className={styles.input} id="email" placeholder="Email" onChange={(e) => setNewEmail(e.target.value)} value={newEmail} />
         </div> <div className={styles.inputContainer}>
-          <label className={styles.labelCaption} htmlFor="password">  </label>
+         
           <input type="password" className={styles.input} id="password" placeholder="password" onChange={(e) => setNewPassword(e.target.value)} value={newPassword} />
         </div>
         <div>
