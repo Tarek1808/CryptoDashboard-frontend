@@ -7,7 +7,7 @@
   padding: 20px;
   background: rgba(0, 0, 0, 0.1);
   position: relative;
-  top: 60px;
+  top: 100px;
   
 }
 
@@ -39,6 +39,8 @@
   font-size: 3rem;
   color: #ffffff;
   position:relative;
+  align-items: center;
+  Justify-content: flex-start;
   
  
 }
