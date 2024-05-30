@@ -17,15 +17,18 @@
     margin-left: 5px;
 }
   
-  .rightContent {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
-  }
-  
+.rightContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100vh;
+  width: 80vw;
+  position: relative;
+  top:13vh;
+  left:17vw;
+}
+
   .title {
     display: flex;
     font-size: 3rem;
@@ -35,6 +38,12 @@
   .image{
     display: flex;
     justify-content: center;
+  }
+
+  .menubar {
+    position:absolute;
+    top:20vh;
+    left: 2vw;
   }
 
 

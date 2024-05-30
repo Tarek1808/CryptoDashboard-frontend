@@ -5,10 +5,7 @@
   justify-content: flex-start;
   align-items: center;
   padding: 20px;
-  background: rgba(0, 0, 0, 0.1);
-  position: relative;
-  top: 60px;
-  
+  background: rgba(0, 0, 0, 0.1);  
 }
 
 .menuItem {
@@ -31,7 +28,10 @@
   justify-content: flex-start;
   align-items: center;
   height: 100vh;
-  width: 100vw;
+  width: 80vw;
+  position: relative;
+  top:13vh;
+  left:17vw;
 }
 
 .title {
@@ -99,4 +99,10 @@
 
 .sinceLastConnection {
   font-size: 15px;
+}
+
+.menubar {
+  position:absolute;
+  top:20vh;
+  left: 2vw;
 }
